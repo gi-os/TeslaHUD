@@ -1,0 +1,78 @@
+.css-selector {
+
+
+    animation: AnimationName 2s ease;
+}
+
+@keyframes flydown {
+		00%{background-position:50% 00%}
+    10%{background-position:50% 100%}
+		100%{background-position:50% 00%}
+}
+@keyframes flyup {
+    0%{background-position:50% 100%}
+		10%{background-position:50% 0%}
+		100%{background-position:50% 100%}
+}
+@keyframes flylogo {
+    0%{background-position:00% 50%}
+		50%{background-position:100% 50%}
+		100%{background-position:00% 50%}
+}
+.main {
+	width:1280px;
+	height:400px;
+	background-color:black;
+	overflow:hidden;
+	z-index:-3;
+	background-repeat: no-repeat;
+	position:absolute;
+  top:0;
+  left:0;
+}
+
+.left {
+	width:640px;
+	height:400px;
+	overflow:hidden;
+	position:absolute;
+	z-index:0;
+}
+#logo {
+	width:200px;
+	height:200px;
+
+	position:absolute;
+	top:100px;
+	left:1050px;
+	background-image:url("https://i.imgur.com/ktOKDXe.png");
+	opacity:0;
+	background-size:cover;
+}
+.right {
+	width:640px;
+	height:400px;
+	left:648px;
+	overflow:hidden;
+	position:absolute;
+
+	z-index:0;
+}
+.leftdiv {
+	width:640px;
+	height:400px;
+
+	/*position:relative;*/
+	float:left;
+	border-radius:50px;
+
+}
+.rightdiv {
+	width:640px;
+	height:400px;
+
+	/*position:relative;*/
+	float:right;
+	border-radius:50px;
+
+}
