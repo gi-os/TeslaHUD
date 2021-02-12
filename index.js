@@ -1,4 +1,4 @@
-console.log("YUS")
+console.log("YUS2")
 
 var dir = "left";
 var pad = "30px";
