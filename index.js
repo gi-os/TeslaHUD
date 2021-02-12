@@ -236,45 +236,97 @@ var oldspot;
 var cagain=true;
 var dtimeout;
 var etimeout;
+var dtimeout2
+var etimeout2
 $(document).on('keyup', function(gfg) {
-	if (gfg.keyCode == 67) {
-		console.log('key was released')
-		cagain=true
+	if (curchoice!=2){
+		if (gfg.keyCode == 67) {
+			console.log('key was released')
+			cagain=true
+		}else if (gfg.keyCode == 68) {
+			//d
+			console.log('d key was released')
+			dtimeout2 =setTimeout(function(){
+				//console.log(selecclickables+" "+selection)
+				if (rightcurpro=="playlist"){
+
+					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
+					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["box-shadow"] = "0px 0px 20px 10px rgba(0, 0, 0, 0.3)";
+				}else{
+					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
+					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["box-shadow"] = "";
+				}
+
+			},4000)
+		} else if (gfg.keyCode == 69) {
+			//e
+			console.log('e key was released')
+			etimeout2 =setTimeout(function(){
+				if (rightcurpro=="playlist"){
+
+					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
+					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["box-shadow"] = "0px 0px 20px 10px rgba(0, 0, 0, 0.3)";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["background-size"] = "100%";
+				}else{
+					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
+					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["box-shadow"] = "";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["background-size"] = "100%";
+				}
+			},4000)
+		}
 	}else if (curchoice==2){
 		if (gfg.keyCode == 68) {
 			//d
-		console.log('d key was released')
+			console.log('d key was released')
 			dtimeout =setTimeout(function(){
-					document.getElementById("in".concat("left", "7")).style.width=0+"px";
-			},4000)
-	} else if (gfg.keyCode == 69) {
-			//e
-		console.log('e key was released')
-		etimeout =setTimeout(function(){
+				document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
 				document.getElementById("in".concat("left", "7")).style.width=0+"px";
-		},4000)
-	}
+				document.getElementById("in".concat("left", "7")).style["opacity"]="0";
+				oldspot =0;
+			},4000)
+		} else if (gfg.keyCode == 69) {
+			//e
+			console.log('e key was released')
+			etimeout =setTimeout(function(){
+				document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
+				document.getElementById("in".concat("left", "7")).style.width=0+"px";
+				document.getElementById("in".concat("left", "7")).style["opacity"]="0";
+				oldspot =0;
+			},4000)
+		}
 	}
 })
 $(document).on('keydown', function(gfg) {
-	if (curchoice==2){
-		if (gfg.keyCode == 68) {
-			//d
+	if (gfg.keyCode == 68) {
+		//d
 		//console.log('d key was pressed')
-			clearTimeout(etimeout);
-		clearTimeout(dtimeout);
-	} else if (gfg.keyCode == 69) {
-			//e
-		//console.log('e key was pressed')
 		clearTimeout(etimeout);
 		clearTimeout(dtimeout);
-	}
-	}
+		clearTimeout(etimeout2);
+		clearTimeout(dtimeout2);
+		} else if (gfg.keyCode == 69) {
+			//e
+			//console.log('e key was pressed')
+			clearTimeout(etimeout);
+			clearTimeout(dtimeout);
+			clearTimeout(etimeout2);
+		clearTimeout(dtimeout2);
+
+		}
 })
 
 var prevshad;
 var nextpagecounter=0;
 var errorcheck=false;
+var selecclickables;
 function zoom(event) {
 	if (curchoice==1){
 		//lastscroll = event.deltaY;
@@ -323,22 +375,35 @@ if (curhover == "right") {
 	if (curchoice==2){
 		console.log("WL:R")
 		distance = 860
+		document.getElementById("in".concat("left", "7")).style["transition"]=".1s";
+		document.getElementById("in".concat("left", "7")).style["opacity"]=".5";
 		//console.log(lastscroll)
 		if (lastscroll !=0){
 			if (lastscroll <0){
 					//curscrollnum= curscrollnum+1
 				//console.log(oldspot)
-
-				if(oldspot < (distance-20)){
+				if (parseInt(document.getElementById("in".concat("left", "7")).style.width, 10) !=0){
+					//console.log(document.getElementById("in".concat("left", "7")).style.width)
+					if(oldspot < (distance-20)){
 					document.getElementById("in".concat("left", "7")).style.width=oldspot+15+"px";
 					document.getElementById("main2").style["transition-timing-function"] ="ease-out";
 					document.getElementById("main2").style["background-position"] =
 						oldspot/distance*100+"% center ";
 				}else{
+
 					oldspot =parseInt(document.getElementById("in".concat("left", "7")).style.width, 10);
 					document.getElementById("in".concat("left", "7")).style.width=oldspot+"px";
 					//oldspot=distance
 				}
+				}else{
+					document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
+					//console.log("UGH"+document.getElementById("in".concat("left", "7")).style.width+oldspot)
+					oldspot =parseInt(document.getElementById("in".concat("left", "3")).style.width, 10);
+					document.getElementById("in".concat("left", "7")).style.width=oldspot+"px";
+					//oldspot =parseInt(document.getElementById("in".concat("left", "3")).style.width, 10);
+					//oldspot=distance
+				}
+
 				oldspot =parseInt(document.getElementById("in".concat("left", "7")).style.width, 10);
 			}else if (lastscroll >0){
 
@@ -360,15 +425,15 @@ if (curhover == "right") {
 		}
 	}else if (curchoice ==1){
 		if (rightcurpro =="music"){
-			var selecclickables = clickables.music
+			selecclickables = clickables.music
 			} else if (rightcurpro =="playlist"){
-				var selecclickables = clickables.playlist
+				selecclickables = clickables.playlist
 				}else if (rightcurpro =="playlistmenu"){
-					var selecclickables = clickables.playlistmenu
+					selecclickables = clickables.playlistmenu
 					} else if (rightcurpro =="podcast"){
-						var selecclickables = clickables.podcast
+						selecclickables = clickables.podcast
 						}else if (rightcurpro =="music2"){
-						var selecclickables = clickables.music2
+						selecclickables = clickables.music2
 						}
 		//console.log(selecclickables)
 		selectionoptions = selecclickables.length
@@ -434,12 +499,9 @@ if (curhover == "right") {
 
 					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
 					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "border-box";
-					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "5px solid rgba(0, 0, 0, .3)";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "5px solid rgba(0, 0, 0, 1)";
 					//console.log("ye")
-
 					document.getElementById("in".concat("right", selecclickables[selection])).style["box-shadow"] = "0 0 0pt 2pt white";
-
-
 				}
 
 			}else if (lastscroll < 0){
@@ -447,8 +509,6 @@ if (curhover == "right") {
 				if (selectionselection !=0){
 					selectionselection=0
 					if (selection == selectionoptions-1){
-
-
 
 						if (rightcurpro =="playlist"){
 							prevshad = "rgba(0, 0, 0, 0.3) 0px 0px 20px 10px";
@@ -465,18 +525,11 @@ if (curhover == "right") {
 										//prevmaxplaylist=curmaxplaylist+6;
 										var i=1
 										var i22=1
-
 										exitloop2(1,"right",totalplaylist)
-
-
 									},400)
 								}
-
-
 							}
 						}
-
-
 						selection=0
 					}else{
 						selection++
@@ -505,13 +558,11 @@ if (curhover == "right") {
 						prevshad = "white 0px 0px 0pt 0pt"
 						console.log(rightcurpro)
 					}
-
 					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
 					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "border-box";
-					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "5px solid rgba(0, 0, 0, .1)";
+					document.getElementById("in".concat("right", selecclickables[selection])).style["border"] = "5px solid rgba(0, 0, 0, 1)";
 					//console.log("otherye")
 					document.getElementById("in".concat("right", selecclickables[selection])).style["box-shadow"] = "0 0 0pt 2pt white";
-
 
 				}
 			}
@@ -1424,7 +1475,6 @@ function drawmusic(dir,indivcoll){
 	document.getElementById("in".concat(dir, "6")).style["transition"] = "1s";
 	document.getElementById("in".concat(dir, "6")).style["transition-delay"] = ".2s";
 
-
 	document.getElementById("in".concat(dir, "1")).style.position = "absolute";
 		document.getElementById("in".concat(dir, "1")).style.width = "250px";
 		document.getElementById("in".concat(dir, "1")).style.height = "250px";
@@ -1433,9 +1483,9 @@ function drawmusic(dir,indivcoll){
 		document.getElementById("in".concat(dir, "1")).style.top = "50px";
 		document.getElementById("in".concat(dir, "1")).style["border-radius"] =
 			"20px";
-
 		document.getElementById("in".concat(dir, "1")).style["background-size"] =
 			"cover";
+
 		document.getElementById("in".concat(dir, "1")).style["box-shadow"] = "0 0 30pt 0pt black";
 		document.getElementById("in".concat(dir, "2")).style.position = "absolute";
 		document.getElementById("in".concat(dir, "2")).style.width = "310px";
@@ -1499,6 +1549,21 @@ function drawmusic(dir,indivcoll){
 		document.getElementById("in".concat(dir, "5")).style.top = "320px";
 		document.getElementById("in".concat(dir, "5")).style["border-radius"] =
 			"20px";
+
+
+
+	document.getElementById("in".concat("right", "1")).style["background-repeat"] =
+		"no-repeat";
+	document.getElementById("in".concat("right", "2")).style["background-repeat"] =
+		"no-repeat";
+	document.getElementById("in".concat("right", "3")).style["background-repeat"] =
+		"no-repeat";
+	document.getElementById("in".concat("right", "4")).style["background-repeat"] =
+		"no-repeat";
+	document.getElementById("in".concat("right", "5")).style["background-repeat"] =
+		"no-repeat";
+	document.getElementById("in".concat("right", "6")).style["background-repeat"] =
+		"no-repeat";
 
 }
 function openmusicwide(dir2, indivcoll) {
