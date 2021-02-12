@@ -1,5 +1,3 @@
-console.log("YUS2")
-
 var dir = "left";
 var pad = "30px";
 var leftcounter = -1;
@@ -204,7 +202,7 @@ function click(dir, indivcoll) {
 			}
 		}else{
 			if (leftcurpro=="music"){
-				console.log("E")
+				//console.log("E")
 				openmusicwide(dir, indivcoll);
 			}else{
 				vart1=1
@@ -235,8 +233,44 @@ function click(dir, indivcoll) {
 var selectionselection=0;
 var oldspot;
 //var countup=0;
-
-
+var cagain=true;
+var dtimeout;
+var etimeout;
+$(document).on('keyup', function(gfg) {
+	if (gfg.keyCode == 67) {
+		console.log('key was released')
+		cagain=true
+	}else if (curchoice==2){
+		if (gfg.keyCode == 68) {
+			//d
+		console.log('d key was released')
+			dtimeout =setTimeout(function(){
+					document.getElementById("in".concat("left", "7")).style.width=0+"px";
+			},4000)
+	} else if (gfg.keyCode == 69) {
+			//e
+		console.log('e key was released')
+		etimeout =setTimeout(function(){
+				document.getElementById("in".concat("left", "7")).style.width=0+"px";
+		},4000)
+	}
+	}
+})
+$(document).on('keydown', function(gfg) {
+	if (curchoice==2){
+		if (gfg.keyCode == 68) {
+			//d
+		//console.log('d key was pressed')
+			clearTimeout(etimeout);
+		clearTimeout(dtimeout);
+	} else if (gfg.keyCode == 69) {
+			//e
+		//console.log('e key was pressed')
+		clearTimeout(etimeout);
+		clearTimeout(dtimeout);
+	}
+	}
+})
 
 var prevshad;
 var nextpagecounter=0;
@@ -289,20 +323,23 @@ if (curhover == "right") {
 	if (curchoice==2){
 		console.log("WL:R")
 		distance = 860
+		//console.log(lastscroll)
 		if (lastscroll !=0){
 			if (lastscroll <0){
+					//curscrollnum= curscrollnum+1
+				//console.log(oldspot)
 
 				if(oldspot < (distance-20)){
-					document.getElementById("in".concat("left", "3")).style.width=oldspot+15+"px";
+					document.getElementById("in".concat("left", "7")).style.width=oldspot+15+"px";
 					document.getElementById("main2").style["transition-timing-function"] ="ease-out";
 					document.getElementById("main2").style["background-position"] =
 						oldspot/distance*100+"% center ";
 				}else{
-					document.getElementById("in".concat("left", "3")).style.width=distance+"px";
-					oldspot=distance
+					oldspot =parseInt(document.getElementById("in".concat("left", "7")).style.width, 10);
+					document.getElementById("in".concat("left", "7")).style.width=oldspot+"px";
+					//oldspot=distance
 				}
-				oldspot =parseInt(document.getElementById("in".concat("left", "3")).style.width, 10);
-
+				oldspot =parseInt(document.getElementById("in".concat("left", "7")).style.width, 10);
 			}else if (lastscroll >0){
 
 				oldpicspot = oldspot/distance*100
@@ -310,15 +347,15 @@ if (curhover == "right") {
 					//console.log("WLKER")
 					document.getElementById("main2").style["background-position"] =
 						oldspot/distance*100+"% center ";
-					document.getElementById("in".concat("left", "3")).style.width=oldspot-15+"px";
+					document.getElementById("in".concat("left", "7")).style.width=oldspot-15+"px";
 
 					//console.log(document.getElementById("in".concat("left", "3")).style.width)
 
 				}else{
-					document.getElementById("in".concat("left", "3")).style.width="20px"
+					document.getElementById("in".concat("left", "7")).style.width="20px"
 					oldspot=20
 				}
-				oldspot =parseInt(document.getElementById("in".concat("left", "3")).style.width, 10);
+				oldspot =parseInt(document.getElementById("in".concat("left", "7")).style.width, 10);
 			}
 		}
 	}else if (curchoice ==1){
@@ -348,7 +385,7 @@ if (curhover == "right") {
 								console.log("WLG")
 
 
-							console.log("CURMAX2"+curmaxplaylist)
+							//console.log("CURMAX2"+curmaxplaylist)
 							wrongs = [-1,6]
 							if(wrongs.includes(curmaxplaylist)!=true){
 								nextpagecounter=0
@@ -419,7 +456,7 @@ if (curhover == "right") {
 							//console.log(selection)
 							if(selection == (selectionoptions-1)){
 								console.log("WLR")
-								console.log("CURMAX!"+curmaxplaylist)
+								//console.log("CURMAX!"+curmaxplaylist)
 								if(curmaxplaylist!=12){
 									nextpagecounter=0
 									curmaxplaylist=6
@@ -450,7 +487,7 @@ if (curhover == "right") {
 				if (selection <= selectionoptions){
 					//console.log(selection)
 					//console.log(selectionoptions)
-					console.log(selection)
+					//console.log(selection)
 					if (selection == 0){
 						document.getElementById("in".concat("right", selecclickables[selectionoptions-1])).style["border"] = "0px";
 						//console.log(selecclickables[selection-1])
@@ -640,13 +677,6 @@ function showerror(){
 		}
 }
 function stylee(data44, dir3) {
-		//console.log(spotifyApi.state);
-		//console.log(navigator.onLine)
-
-		//const statusDisplay = document.getElementById("status");
-		//statusDisplay.textContent = navigator.onLine ? "Online" : "OFFline";
-
-	//console.log(navigator.onLine)
 	if(errorcheck==true){
 		console.log("ye")
 		}else{
@@ -728,8 +758,8 @@ function stylee(data44, dir3) {
 					spot2+"% center ";
 
 			}else{
-				console.log("item4")
-				document.getElementById("in".concat(dir3, "7")).style.width = spot + "px";
+				//console.log("item4")
+				document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 			}
 		}else{
 
@@ -959,9 +989,9 @@ function podcaststylee(data, dir4) {
 		"My Brother, My Brother And Me"
 	];
 	while (i <= data.items.length - 1) {
-		console.log(i)
+		//console.log(i)
 		if (favpodcastlist.indexOf(data.items[i].show.name) >= 0) {
-			console.log(i)
+			//console.log(i)
 			spotifyApi.getShowEpisodes(data.items[i].show.id).then(
 				function (data3) {
 					spotifyApi.getEpisode(data3.items[0].id).then(
@@ -991,7 +1021,7 @@ function podcaststylee(data, dir4) {
 								document.getElementById("in".concat(dir4, i2+i3+3)).style["z-index"] = "3";
 								document.getElementById("in".concat(dir4, i2+i3+3)).style['box-shadow'] = "0px 0px 20px 10px rgba(0, 0, 0, 0.8)";
 							}
-							console.log(i2+i3-3)
+							//console.log(i2+i3-3)
 							document.getElementById("in".concat(dir4, i2+i3)).innerHTML = String(data2.name);
 							document.getElementById("in".concat(dir4, i2+i3-3)).style['transition-duration'] = "1s,0s,0s,0s";
 							document.getElementById("in".concat(dir4, i2+i3-3)).style["transition-property"] = "all,background-image,display,opacity";
@@ -1034,7 +1064,7 @@ function playsong(){
 	//console.log(datafile.context.uri)
 	//console.log(oldspot)
 	var dirat =datafile.item.duration_ms;
-	document.getElementById("in".concat("left", "3")).style.width=0+"px";
+	document.getElementById("in".concat("left", "7")).style.width=0+"px";
 	var dirat =datafile.item.duration_ms;
 	var oldspotms = parseInt(((oldspot-15)/860)*dirat)
 	if (oldspot == 20){
@@ -1089,21 +1119,21 @@ window.onkeydown = function (gfg) {
 		//selection=0
 	}else if (gfg.keyCode === 67) {
 		//console.log("C key is pressed");
-		if (curhover == "left"){
-			if (curchoice==2){
-				playsong();
-			}else{
-				//console.log(selection)
-				inclick('left',selection)
+		if(cagain ==true){
+			console.log(cagain)
+			if (curhover =="right"){
+				if (curchoice==2){
+					playsong();
+				}else{
+					inclick('right',selection)
+				}
 			}
-
-		} else if (curhover =="right"){
-			if (curchoice==2){
-				playsong();
-			}else{
-				inclick('right',selection)
-			}
+			cagain=false
+		}else{
+			console.log(cagain)
 		}
+
+
 	}else if (gfg.keyCode === 68) {
 		//console.log("D key is pressed");
 		lastscroll = -10;
@@ -1139,6 +1169,8 @@ function clear(dir, indivcoll) {
 			clearTimeout(musictimeout3);
 			clearTimeout(musictimeout2);
 			clearTimeout(musictimeout5);
+			clearTimeout(etimeout);
+			clearTimeout(dtimeout);
 			//console.log("music canceled");
 		}
 	} else if (dir == "right") {
@@ -1148,6 +1180,8 @@ function clear(dir, indivcoll) {
 			clearTimeout(musictimeout3);
 			clearTimeout(musictimeout2);
 			clearTimeout(musictimeout5);
+			clearTimeout(etimeout);
+			clearTimeout(dtimeout);
 			//console.log("music canceled");
 		}
 	}
