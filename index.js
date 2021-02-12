@@ -1,3 +1,5 @@
+console.log("YUS")
+
 var dir = "left";
 var pad = "30px";
 var leftcounter = -1;
