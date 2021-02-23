@@ -238,6 +238,8 @@ var dtimeout;
 var etimeout;
 var dtimeout2
 var etimeout2
+var atimeout;
+var btimeout;
 var swipeallow=false;
 $(document).on('keyup', function(gfg) {
 	if (curchoice!=2){
@@ -250,7 +252,8 @@ $(document).on('keyup', function(gfg) {
 				zoom()
 
 			}
-			setTimeout(function(){ cagain=true; console.log("YUg") }, 3000);
+			clearTimeout(btimeout);
+			btimeout = setTimeout(function(){ cagain=true; console.log("YUg") }, 2000);
 
 		}
 		if (gfg.keyCode == 66) {
@@ -262,7 +265,8 @@ $(document).on('keyup', function(gfg) {
 			zoom()
 
 		}
-			setTimeout(function(){ cagain=true; console.log("YUE") }, 3000);
+			clearTimeout(atimeout);
+			atimeout = setTimeout(function(){ cagain=true; console.log("YUE") }, 2000);
 
 		}
 		if (gfg.keyCode == 67) {
