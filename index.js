@@ -241,6 +241,11 @@ var etimeout2
 var swipeallow=false;
 $(document).on('keyup', function(gfg) {
 	if (curchoice!=2){
+		if (gfg.keyCode == 65) {
+			console.log('a key was released')
+			setTimeout(function(){ cagain=true; console.log("YUg") }, 3000);
+
+		}
 		if (gfg.keyCode == 66) {
 			console.log('b key was released')
 			setTimeout(function(){ cagain=true; console.log("YUE") }, 3000);
@@ -1181,16 +1186,20 @@ function playsong(){
 window.onkeydown = function (gfg) {
 	if (gfg.keyCode === 65) {
 		//console.log("A key is pressed");
-		lastscroll = -10;
-		curchoice = 0;
-		zoom()
+		if (swipeallow==true) {
+			lastscroll = -10;
+			curchoice = 0;
+			cagain==false
+			zoom()
+
+		}
+
 
 		//selection=0
 	}else if (gfg.keyCode === 66) {
 		//keysPressed[event.key] = true;
 
 		if (swipeallow==true) {
-			console.log("test")
 			lastscroll = 10;
 			curchoice = 0;
 			cagain==false
