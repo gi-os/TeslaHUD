@@ -245,26 +245,20 @@ $(document).on('keyup', function(gfg) {
 	if (curchoice!=2){
 		if (gfg.keyCode == 65) {
 			console.log('a key was released')
-			if (swipeallow==true) {
-				lastscroll = -10;
+			lastscroll = -10;
 				curchoice = 0;
 				cagain==false
 				zoom()
-
-			}
 			clearTimeout(btimeout);
 			btimeout = setTimeout(function(){ cagain=true; console.log("YUg") }, 2000);
 
 		}
 		if (gfg.keyCode == 66) {
 			console.log('b key was released')
-			if (swipeallow==true) {
 			lastscroll = 10;
 			curchoice = 0;
 			cagain==false
 			zoom()
-
-		}
 			clearTimeout(atimeout);
 			atimeout = setTimeout(function(){ cagain=true; console.log("YUE") }, 2000);
 
@@ -272,7 +266,8 @@ $(document).on('keyup', function(gfg) {
 		if (gfg.keyCode == 67) {
 			console.log('c key was released')
 
-			swipeallow=false
+			swipeallow=true
+			setTimeout(function(){ swipeallow=false; console.log("YUf") }, 1000);
 			if(cagain ==true){
 				console.log(cagain)
 				if (curhover =="right"){
