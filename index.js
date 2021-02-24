@@ -238,49 +238,11 @@ var dtimeout;
 var etimeout;
 var dtimeout2
 var etimeout2
-var atimeout;
-var btimeout;
-var swipeallow=false;
 $(document).on('keyup', function(gfg) {
 	if (curchoice!=2){
-		if (gfg.keyCode == 65) {
-			console.log('a key was released')
-			lastscroll = -10;
-				curchoice = 0;
-				cagain==false
-				zoom()
-			clearTimeout(btimeout);
-			btimeout = setTimeout(function(){ cagain=true; console.log("YUg") }, 2000);
-
-		}
-		if (gfg.keyCode == 66) {
-			console.log('b key was released')
-			lastscroll = 10;
-			curchoice = 0;
-			cagain==false
-			zoom()
-			clearTimeout(atimeout);
-			atimeout = setTimeout(function(){ cagain=true; console.log("YUE") }, 2000);
-
-		}
 		if (gfg.keyCode == 67) {
-			console.log('c key was released')
-
-			swipeallow=true
-			setTimeout(function(){ swipeallow=false; console.log("YUf") }, 1000);
-			if(cagain ==true){
-				console.log(cagain)
-				if (curhover =="right"){
-					if (curchoice==2){
-						playsong();
-					}else{
-						inclick('right',selection)
-					}
-				}
-				cagain=false
-			}else{
-				console.log(cagain)
-			}
+			console.log('key was released')
+			cagain=true
 		}else if (gfg.keyCode == 68) {
 			//d
 			console.log('d key was released')
@@ -343,16 +305,9 @@ $(document).on('keyup', function(gfg) {
 	}
 })
 $(document).on('keydown', function(gfg) {
-	if (gfg.keyCode == 67) {
-		//c
-		//console.log('c key was pressed')
-		swipeallow=true
-		//cagain=true
-
-		}else if (gfg.keyCode == 68) {
+	if (gfg.keyCode == 68) {
 		//d
 		//console.log('d key was pressed')
-
 		clearTimeout(etimeout);
 		clearTimeout(dtimeout);
 		clearTimeout(etimeout2);
@@ -414,6 +369,9 @@ if (curhover == "right") {
 			}
 		}
 	}
+	//console.log("is on")
+	//console.log("LEFTCURPRO",leftcurpro)
+
 	if (curchoice==2){
 		console.log("WL:R")
 		distance = 860
@@ -1199,15 +1157,32 @@ function playsong(){
 window.onkeydown = function (gfg) {
 	if (gfg.keyCode === 65) {
 		//console.log("A key is pressed");
+		lastscroll = -10;
+		curchoice = 0;
+		zoom()
 
 		//selection=0
 	}else if (gfg.keyCode === 66) {
-		//keysPressed[event.key] = true;
+		lastscroll = 10;
+		curchoice = 0;
+		zoom()
 
 		//selection=0
 	}else if (gfg.keyCode === 67) {
-		console.log("Cc key is pressed");
-		cagain==true
+		//console.log("C key is pressed");
+		if(cagain ==true){
+			console.log(cagain)
+			if (curhover =="right"){
+				if (curchoice==2){
+					playsong();
+				}else{
+					inclick('right',selection)
+				}
+			}
+			cagain=false
+		}else{
+			console.log(cagain)
+		}
 
 
 	}else if (gfg.keyCode === 68) {
