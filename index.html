@@ -1,4 +1,7 @@
-<script></script>
+
+<script type="text/javascript"></script>
+
+
 <link rel="stylesheet" href="https://use.typekit.net/wnn7zsi.css">
 <div class="main" id="main" >
 	<div class="main" id="main2" >
@@ -6,6 +9,7 @@
 	<audio onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 600)">
 
 		<!--
+
 https://raw.githubusercontent.com/gi-os/PassportOS/master/boot-screen-startup-1080p.mp3
 
 
@@ -13,7 +17,6 @@ IAN SOUND
 https://raw.githubusercontent.com/gi-os/TeslaHUD/master/gio%20is%20a%20bitch.mp3?token=ADZRUDMIAJP7GMFP3YLPVSLAE5FTS
 -->
 		<source src="https://raw.githubusercontent.com/gi-os/PassportOS/master/boot-screen-startup-1080p.mp3" type="audio/mp3" />
-
 	</audio>
 
 	<div class="left" id="left" >
@@ -21,7 +24,7 @@ https://raw.githubusercontent.com/gi-os/TeslaHUD/master/gio%20is%20a%20bitch.mp3
 			<div class="leftindiv" id="inleft6" onload="fadeIn(this)" ></div>
 			<div class="leftindiv" id="inleft4" onload="fadeIn(this)" ></div>
 			<div class="leftindiv" id="inleft5" onload="fadeIn(this)" ></div>
-			<div class="leftindiv" id="inleft1" onload="fadeIn(this)" onclick="javascript:document.exitFullscreen()"></div>
+			<div class="leftindiv" id="inleft1" onload="fadeIn(this)" onclick="javascript:window.close('','_parent','');"></div>
 			<div class="leftindiv" id="inleft2" onload="fadeIn(this)" ></div>
 			<div class="leftindiv" id="inleft3" onload="fadeIn(this)" ></div>
 			<div class="leftindiv" id="inleft7" onload="fadeIn(this)" ></div>
@@ -45,3 +48,103 @@ https://raw.githubusercontent.com/gi-os/TeslaHUD/master/gio%20is%20a%20bitch.mp3
 	<div id="logo" onclick="javascript:window.close('','_parent','');"></div>
 	<div class="error" id="error" onclick="javascript:window.close('','_parent','');"></div>
 </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spotify-web-api-js/1.5.1/spotify-web-api.js"></script>
+<script type="text/javascript" src="index.js">
+
+</script>
+<style>
+	body{
+		background-color:black;
+	}
+	background: linear-gradient(
+	315deg,
+	rgb(154, 183, 230) 0%,
+	rgb(238, 174, 174) 100%
+	);
+	.css-selector {
+
+		animation: AnimationName 2s ease;
+	}
+	#main2{
+
+		opacity:0;
+		border-radius:20px;
+	}
+	@keyframes flydown {
+		00%{background-position:50% 00%}
+		10%{background-position:50% 100%}
+		100%{background-position:50% 00%}
+	}
+	@keyframes flyup {
+		0%{background-position:50% 100%}
+		10%{background-position:50% 0%}
+		100%{background-position:50% 100%}
+	}
+	@keyframes flylogo {
+		0%{background-position:00% 50%}
+		50%{background-position:100% 50%}
+		100%{background-position:00% 50%}
+	}
+	.main {
+		width:1280px;
+		height:400px;
+
+		overflow:hidden;
+		z-index:-3;
+		background-repeat: no-repeat;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+
+	.left {
+		width:640px;
+		height:400px;
+		overflow:hidden;
+		position:absolute;
+		z-index:0;
+	}
+	#logo {
+		width:200px;
+		height:200px;
+
+		position:absolute;
+		top:100px;
+		left:1050px;
+		background-image:url("https://i.imgur.com/ktOKDXe.png");
+		opacity:0;
+		background-size:cover;
+	}
+	.right {
+		width:640px;
+		height:400px;
+		left:648px;
+		overflow:hidden;
+		position:absolute;
+
+		z-index:0;
+	}
+	.leftdiv {
+		width:640px;
+		height:400px;
+
+		/*position:relative;*/
+		float:left;
+		border-radius:50px;
+		overflow:hidden;
+	}
+	.rightdiv {
+		width:640px;
+		height:400px;
+		overflow:hidden;
+		/*position:relative;*/
+		float:right;
+		border-radius:50px;
+
+	}
+
+
+
+</style>
