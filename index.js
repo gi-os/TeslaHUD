@@ -697,6 +697,7 @@ function musiccallback(dir3) {
 }
 var datafile;
 var status;
+var album ="nada";
 var justreconnected=false;
 function showerror(){
 		if(errorcheck==true){
@@ -867,10 +868,18 @@ function stylee(data44, dir3) {
 		//prevsong = data.item.name;
 
 		//document.getElementById("leftdiv").style["border-radius"] = "100px";
-		document.getElementById("in".concat(dir3, "1")).style.transform =
-			" scale(1.5,1.5)";
-		document.getElementById("in".concat(dir3, "1")).style.opacity = "0";
-		document.getElementById("main2").style.opacity = "0";
+		if (data44.item.album.name ==album){
+							var newart = false
+
+						}else{
+							var newart = true
+							document.getElementById("in".concat(dir3, "1")).style.transform =
+								" scale(1.5,1.5)";
+							document.getElementById("in".concat(dir3, "1")).style.opacity = "0";
+							document.getElementById("main2").style.opacity = "0";
+							album = data44.item.album.name
+						}
+
 	}
 
 	if ((prevsong != "none")&&(timeout ==0)) {
@@ -890,7 +899,10 @@ function stylee(data44, dir3) {
 			//if (prevsong != data44.item.name) {
 			//console.log("item14")
 			document.getElementById("in".concat(dir3, "4")).style.opacity = "0";
-			document.getElementById("in".concat(dir3, "2")).style.opacity = "0";
+			if( newart == true){
+				console.log("yeh")
+				document.getElementById("in".concat(dir3, "2")).style.opacity = "0";
+			}
 			//}
 			musictimeout2 = setTimeout(function () {
 				//console.log("item15")
@@ -929,12 +941,15 @@ function stylee(data44, dir3) {
 								"url(" + data44.item.album.images[0].url + ")";
 
 						} else {
-							//console.log("item21")
-							document.getElementById("in".concat(dir3, "1")).style[
+							if (newart == true){
+								document.getElementById("in".concat(dir3, "1")).style[
 								"background-image"
 							] = "url(https://i.imgur.com/Dj7MXfv.png)";
 							document.getElementById("main2").style["background-image"] =
 								"";
+							}
+							//console.log("item21")
+
 
 						}
 					} else {
@@ -949,20 +964,28 @@ function stylee(data44, dir3) {
 					if (data44.currently_playing_type == "track") {
 						//console.log("item23")
 						var string = data44.item.artists[0].name + " - " + data44.item.album.name;
+
+
+
 					} else {
 						//console.log("item24")
 						var string = data44.item.show.name;
 					}
+
+
 					//var length = 45;
 					//var trimmedString =
 					//string.length > length ? string.substring(0, length - 3) + "..." : string;
 					//console.log("item25")
+
 					document.getElementById("in".concat(dir3, "2")).innerHTML = string;
 					document.getElementById("in".concat(dir3, "2")).style['text-overflow'] = "ellipsis";
 					document.getElementById("in".concat(dir3, "2")).style['display'] = "-webkit-box";
 					document.getElementById("in".concat(dir3, "2")).style['-webkit-box-orient'] = "vertical";
 					document.getElementById("in".concat(dir3, "2")).style['-webkit-line-clamp'] = 2;
 					document.getElementById("in".concat(dir3, "2")).style['overflow'] = "hidden";
+
+
 					//buck
 					//document.getElementById("in".concat(dir3, "6")).style["background-image"] =
 					//"url(" + data.item.album.images[0].url + ")";
@@ -981,7 +1004,9 @@ function stylee(data44, dir3) {
 						document.getElementById("in".concat(dir3, "1")).style.opacity = "1";
 
 						document.getElementById("in".concat(dir3, "4")).style.opacity = "1";
-						document.getElementById("in".concat(dir3, "2")).style.opacity = "1";
+						if( newart == true){
+							document.getElementById("in".concat(dir3, "2")).style.opacity = "1";
+						}
 						document.getElementById("main2").style.opacity = ".5";
 						//}
 					}, timeout4);
