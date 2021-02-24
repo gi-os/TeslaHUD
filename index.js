@@ -7,7 +7,7 @@ var colorblend = "#0500a3";
 var leftcurpro = "music";
 var rightcurpro = "playlist";
 var curhover;
-var lastscroll = 100;
+var lastscroll = "begin";
 var justboot = 1;
 var max = 3;
 var runani = 0;
@@ -56,8 +56,11 @@ var playlisttimeout1;
 var prevleft;
 var prevtop;
 var curdir="left";
+var beginskip;
+var juststarted=true;
 var clickables = {music:[3,7,8,9], playlist:[1,2,3,4,5,6,],playlistmenu:[7,8,9], podcast:[1,2,3],music2:[]};
 begin();
+
 function begin() {
 
 	curhover = "right";
@@ -73,6 +76,7 @@ function begin() {
 	document.getElementById("error").style["text-align"] = "left";
 	document.getElementById("error").style["overflow"] = "hidden";
 	document.getElementById("error").style["text-shadow"] = "0px 0px 5px black";
+
 
 	if (navigator.platform != "Win32") {
 		document.getElementById("main").style["background"] =
@@ -91,10 +95,18 @@ function begin() {
 		setTimeout(function () {
 			click("left", indivcol1);
 			click("right", indivcol2);
+			beginskip = setTimeout(function () {
+				lastscroll=-10
+				click("right", indivcol2);
+				}, 10000);
 		}, 4000);
 	} else {
 		click("left", indivcol1);
 		click("right", indivcol2);
+		beginskip = setTimeout(function () {
+			lastscroll=-10
+			click("right", indivcol2);
+		}, 10000);
 	}
 }
 function hovert(dir) {
@@ -136,8 +148,13 @@ function inclick(dir, id) {
 }//click selector system
 var vart1=0
 function click(dir, indivcoll) {
+	if (lastscroll == "begin"){
+		lastscroll=100
+		console.log("yer")
+	}
 
-	if (lastscroll <= 0) {
+	console.log(lastscroll)
+	if (lastscroll < 0) {
 		if (dir == "left") {
 			if (leftcounter == rightcounter + 1) {
 				leftcounter = leftcounter - 1;
@@ -158,7 +175,7 @@ function click(dir, indivcoll) {
 		} else {
 			counter = max;
 		}
-	} else if (lastscroll >= 0) {
+	} else if (lastscroll > 0) {
 		if (dir == "left") {
 			if (leftcounter == rightcounter - 1) {
 				leftcounter = leftcounter + 1;
@@ -180,6 +197,7 @@ function click(dir, indivcoll) {
 			counter = 0;
 		}
 	}
+
 	if (lastscroll >= 0) {
 		exitdown(dir);
 	} else if (lastscroll <= 0) {
@@ -206,18 +224,147 @@ function click(dir, indivcoll) {
 				openmusicwide(dir, indivcoll);
 			}else{
 				vart1=1
-
 			}
 		}
 	}
 
+	console.log(juststarted)
+	if (juststarted == true){
+		juststarted="working"
+		console.log("test")
+		setTimeout(function () {
+			document.getElementById("leftdiv").style.transition = "0s";
+			document.getElementById("leftdiv").style.transform =
+				"";
+			document.getElementById("rightdiv").style.transition = "0s";
+			document.getElementById("rightdiv").style.transform =
+				"";
+			document.getElementById("leftdiv").style["opacity"] = "0";
+			document.getElementById("inleft1").style["opacity"] = "0";
+			document.getElementById("inleft1").style.transform =
+				"scale(0,0) translate(00px,00px)";
+			document.getElementById("inleft2").style.transition = "0s";
+			document.getElementById("inleft2").style["opacity"] = "0";
 
 
-	if (lastscroll >= 0) {
-		enterdown(dir);
-	} else if (lastscroll <= 0) {
-		enterup(dir);
+			setTimeout(function () {
+				document.getElementById("inleft4").style.transition = "0s";
+				document.getElementById("inleft4").style["opacity"] = "0";
+				document.getElementById("inright1").style["opacity"] = "1";
+				document.getElementById("inright1").style.transform =
+					"scale(0,0) translate(00px,00px)";
+				document.getElementById("inright2").style["opacity"] = "1";
+				document.getElementById("inright2").style.transform =
+					"scale(0,0) translate(00px,00px)";
+				document.getElementById("inright3").style["opacity"] = "1";
+				document.getElementById("inright3").style.transform =
+					"scale(0,0) translate(00px,00px)";
+				document.getElementById("inright4").style["opacity"] = "1";
+				document.getElementById("inright4").style.transform =
+					"scale(0,0) translate(00px,00px)";
+				document.getElementById("inright5").style["opacity"] = "1";
+				document.getElementById("inright5").style.transform =
+					"scale(0,0) translate(00px,00px)";
+				document.getElementById("inright6").style["opacity"] = "1";
+				document.getElementById("inright6").style.transform =
+					"scale(0,0) translate(00px,00px)";
+				document.getElementById("rightdiv").style.transition = ".5s";
+				document.getElementById("rightdiv").style.opacity = "1";
+				document.getElementById("leftdiv").style.transition = ".5s";
+				document.getElementById("leftdiv").style.opacity = "1";
+				document.getElementById("inleft1").style.transition = ".5s";
+				document.getElementById("inleft1").style["opacity"] = "1";
+				document.getElementById("inleft1").style.transform = "scale(1.5,1.5)";
+				setTimeout(function () {
+					document.getElementById("inleft1").style.transition = ".5s";
+					document.getElementById("inleft1").style.transform = "scale(1,1)";
+					document.getElementById("inleft4").style.transition = "1s";
+					document.getElementById("inleft4").style["opacity"] = "1";
+					document.getElementById("inleft2").style.transition = "1s";
+					document.getElementById("inleft2").style["opacity"] = "1";
+
+					document.getElementById("inright1").style.transition = ".5s";
+					document.getElementById("inright1").style['transition-delay']= ".2s";
+					document.getElementById("inright1").style.transform = "scale(1.5,1.5)";
+
+					document.getElementById("inright2").style.transition = ".5s";
+					document.getElementById("inright2").style['transition-delay']= ".4s";
+					document.getElementById("inright2").style.transform = "scale(1.5,1.5)";
+
+					document.getElementById("inright3").style.transition = ".5s";
+					document.getElementById("inright3").style['transition-delay']= ".6s";
+					document.getElementById("inright3").style.transform = "scale(1.5,1.5)";
+
+					document.getElementById("inright4").style.transition = ".5s";
+					document.getElementById("inright4").style['transition-delay']= ".2s";
+					document.getElementById("inright4").style.transform = "scale(1.5,1.5)";
+
+					document.getElementById("inright5").style.transition = ".5s";
+					document.getElementById("inright5").style['transition-delay']= ".4s";
+					document.getElementById("inright5").style.transform = "scale(1.5,1.5)";
+
+					document.getElementById("inright6").style.transition = ".5s";
+					document.getElementById("inright6").style['transition-delay']= ".6s";
+					document.getElementById("inright6").style.transform = "scale(1.5,1.5)";
+
+					setTimeout(function () {
+
+							document.getElementById("inright1").style.transition = ".5s";
+							document.getElementById("inright1").style['transition-delay']= "0s";
+							document.getElementById("inright1").style.transform = "scale(1,1)";
+
+							document.getElementById("inright4").style.transition = ".5s";
+							document.getElementById("inright4").style['transition-delay']= "0s";
+							document.getElementById("inright4").style.transform = "scale(1,1)";
+							setTimeout(function () {
+
+								document.getElementById("inright2").style.transition = ".5s";
+								document.getElementById("inright2").style['transition-delay']= "0s";
+								document.getElementById("inright2").style.transform = "scale(1,1)";
+
+
+								document.getElementById("inright5").style.transition = ".5s";
+								document.getElementById("inright5").style['transition-delay']= "0s";
+								document.getElementById("inright5").style.transform = "scale(1,1)";
+
+								setTimeout(function () {
+
+
+									document.getElementById("inright3").style.transition = ".5s";
+									document.getElementById("inright3").style['transition-delay']= "0s";
+									document.getElementById("inright3").style.transform = "scale(1,1)";
+
+									document.getElementById("inright6").style.transition = ".5s";
+									document.getElementById("inright6").style['transition-delay']= "0s";
+									document.getElementById("inright6").style.transform = "scale(1,1)";
+
+
+
+								}, 200);
+							}, 200);
+						}, 700);
+				}, 500);
+			}, 200);
+		}, 220);
+		setTimeout(function () {
+			document.getElementById("main").style.transition = "3s";
+			document.getElementById("main").style["animation"] = "";
+			document.getElementById("main").style["background"] =
+				"linear-gradient(180deg, #000000,#000000 ";
+			gradani = 0;
+			runani = 0;
+			//document.getElementById(dir).style["background-positon"] = "50% 1200px";
+			juststarted=false
+		}, 550);
+
+	}else if (juststarted==false){
+		if (lastscroll >= 0) {
+			enterdown(dir);
+		} else if (lastscroll <= 0) {
+			enterup(dir);
+		}
 	}
+
 	//console.log(counter);
 	//console.log(lastscroll);
 	if (dir == "left") {
@@ -288,18 +435,25 @@ $(document).on('keyup', function(gfg) {
 			console.log('d key was released')
 			dtimeout =setTimeout(function(){
 				document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
-				document.getElementById("in".concat("left", "7")).style.width=0+"px";
+				document.getElementById("in".concat("left", "7")).style.width="0px";
+
 				document.getElementById("in".concat("left", "7")).style["opacity"]="0";
 				oldspot =0;
+				curchoice=1;
+				document.getElementById("main2").style["transition-timing-function"] ="linear";
+				document.getElementById("main2").style["transition-delay"] ="0s";
 			},4000)
 		} else if (gfg.keyCode == 69) {
 			//e
 			console.log('e key was released')
 			etimeout =setTimeout(function(){
 				document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
-				document.getElementById("in".concat("left", "7")).style.width=0+"px";
+				document.getElementById("in".concat("left", "7")).style.width=0;
 				document.getElementById("in".concat("left", "7")).style["opacity"]="0";
 				oldspot =0;
+				curchoice=1;
+				document.getElementById("main2").style["transition-timing-function"] ="linear";
+				document.getElementById("main2").style["transition-delay"] ="0s";
 			},4000)
 		}
 	}
@@ -383,7 +537,8 @@ if (curhover == "right") {
 					//curscrollnum= curscrollnum+1
 				//console.log(oldspot)
 				if (parseInt(document.getElementById("in".concat("left", "7")).style.width, 10) !=0){
-					//console.log(document.getElementById("in".concat("left", "7")).style.width)
+					console.log(parseInt(document.getElementById("in".concat("left", "7")).style.width, 10))
+					console.log(oldspot)
 					if(oldspot < (distance-20)){
 					document.getElementById("in".concat("left", "7")).style.width=oldspot+15+"px";
 					document.getElementById("main2").style["transition-timing-function"] ="ease-out";
@@ -806,6 +961,7 @@ function stylee(data44, dir3) {
 						".5";
 				}
 				document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
+				console.log(spot2)
 				document.getElementById("main2").style["background-position"] =
 					spot2+"% center ";
 
@@ -1033,7 +1189,7 @@ function playliststylee(data, dir3) {
 		//console.log(bigimage[i-1]);
 		//i11[i]=[i]
 		if (typeof bigimage[i-1] == 'undefined'){
-			document.getElementById("in".concat(dir3, i)).style["display"] = "none";
+			//document.getElementById("in".concat(dir3, i)).style["display"] = "none";
 			bigimage[i-1] = new Image();
 			bigimage[i-1].src=data.items[i-1].images[0].url;
 			i11[i]=[i]
@@ -1042,7 +1198,7 @@ function playliststylee(data, dir3) {
 			document.getElementById("in".concat(dir3, i)).style["background-image"] = "url("+bigimage[i-1].src+")";
 		}
 		$(bigimage[i-1]).on('load',function(){
-			$("#in".concat(dir3, i11[i22])).css("background-image","url("+$(this).attr("src")+")").fadeIn(i11[i22]*700);
+			$("#in".concat(dir3, i11[i22])).css("background-image","url("+$(this).attr("src")+")");
 			i22++
 		});
 		//console.log(data.items)
@@ -1180,6 +1336,7 @@ function playsong(){
 	});
 }
 window.onkeydown = function (gfg) {
+	clearTimeout(beginskip);
 	if (gfg.keyCode === 65) {
 		//console.log("A key is pressed");
 		lastscroll = -10;
