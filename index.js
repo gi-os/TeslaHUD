@@ -18,7 +18,7 @@ var i = 1, i2 = 1, i11 = [],i22 = 1;//i's
 var totalplaylist, curmaxplaylist = 0, bigimage = [], playlistname = [];//playlist stuff
 var podname = [], bigimagepod = [];//pod stuff
 var leftcurpro = "music", rightcurpro = "playlist", dir = "left", lastscroll = "begin", previcon = "null", curdir = "left", album = "nada", font = "basic-sans, sans-serif";//misc word vals
-var focused, idclicked, selecid, playlisttimeout1, prevleft, prevtop, beginskip, oldspot, prevshad, selecclickables, datafile, status, curhover;// misc empty vals
+var focused, idclicked, selecid, playlisttimeout1, playlisttimeout, playlisttimeout2, playlisttimeout3, playlisttimeout4, playlisttimeout5, playlisttimeout6, playlisttimeout7, playlisttimeout8, prevleft, prevtop, beginskip, oldspot, prevshad, selecclickables, datafile, status, curhover;// misc empty vals
 var counter = 0, songlength = 0, vart1 = 0, curchoice = 0, lastscrollcounter = 0, nextpagecounter = 0, inwork = 0, lenge = 0, leftcounter = -1, rightcounter = -1, max = 3, justboot = 1;//misc 0 values
 var writeerwork = false, justreconnected = false, errorcheck = false, cagain = true, blocker = false, blocker2 = true, juststarted = true, stylemusic = false;//misc true/false vals
 var clickables = {
@@ -262,7 +262,7 @@ function zoom(event) {
 						if (rightcurpro == "playlist") {
 							prevshad = "rgba(0, 0, 0, 0.3) 0px 0px 20px 10px";
 							if (selection == selectionoptions - 1) {
-								console.log("WLR");
+								//nsole.log("WLR");
 								if (curmaxplaylist != 12) {
 									nextpagecounter = 0;
 									curmaxplaylist = 6;
@@ -283,13 +283,14 @@ function zoom(event) {
 					selectionselection++;
 				}
 				if (selection <= selectionoptions) {
-					if (selection == 0) {
+					if (selection <= 0) {
 						document.getElementById(
 							"in".concat("right", selecclickables[selectionoptions - 1])
 						).style["border"] = "0px";
 						document.getElementById(
 							"in".concat("right", selecclickables[selectionoptions - 1])
 						).style["box-shadow"] = prevshad;
+						selection=0
 					} else {
 						document.getElementById(
 							"in".concat("right", selecclickables[selection - 1])
@@ -298,7 +299,6 @@ function zoom(event) {
 							"in".concat("right", selecclickables[selection - 1])
 						).style["box-shadow"] = prevshad;
 					}
-
 					if (rightcurpro == "playlist") {
 						prevshad = "rgba(0, 0, 0, 0.3) 0px 0px 20px 10px";
 					} else {
@@ -486,27 +486,27 @@ function click(dir, indivcoll) {
 
 					document.getElementById("inright1").style.transition = ".5s";
 					document.getElementById("inright1").style["transition-delay"] = ".2s";
-					document.getElementById("inright1").style.transform = "scale(1.5,1.5)";
+					document.getElementById("inright1").style.transform = "scale(1.2,1.2)";
 
 					document.getElementById("inright2").style.transition = ".5s";
 					document.getElementById("inright2").style["transition-delay"] = ".4s";
-					document.getElementById("inright2").style.transform = "scale(1.5,1.5)";
+					document.getElementById("inright2").style.transform = "scale(1.2,1.2)";
 
 					document.getElementById("inright3").style.transition = ".5s";
 					document.getElementById("inright3").style["transition-delay"] = ".6s";
-					document.getElementById("inright3").style.transform = "scale(1.5,1.5)";
+					document.getElementById("inright3").style.transform = "scale(1.2,1.2)";
 
 					document.getElementById("inright4").style.transition = ".5s";
 					document.getElementById("inright4").style["transition-delay"] = ".2s";
-					document.getElementById("inright4").style.transform = "scale(1.5,1.5)";
+					document.getElementById("inright4").style.transform = "scale(1.2,1.2)";
 
 					document.getElementById("inright5").style.transition = ".5s";
 					document.getElementById("inright5").style["transition-delay"] = ".4s";
-					document.getElementById("inright5").style.transform = "scale(1.5,1.5)";
+					document.getElementById("inright5").style.transform = "scale(1.2,1.2)";
 
 					document.getElementById("inright6").style.transition = ".5s";
 					document.getElementById("inright6").style["transition-delay"] = ".6s";
-					document.getElementById("inright6").style.transform = "scale(1.5,1.5)";
+					document.getElementById("inright6").style.transform = "scale(1.2,1.2)";
 
 					setTimeout(function () {
 						document.getElementById("inright1").style.transition = ".5s";
@@ -621,6 +621,7 @@ function getnewtoken() {
 $(document).on("keyup", function (gfg) {
 	if (curchoice != 2) {
 		if (gfg.keyCode == 67) {
+			//c
 			//console.log('key was released')
 			cagain = true;
 		} else if (gfg.keyCode == 68) {
@@ -642,6 +643,7 @@ $(document).on("keyup", function (gfg) {
 						"in".concat("right", selecclickables[selection])
 					).style["box-shadow"] = "0px 0px 20px 10px rgba(0, 0, 0, 0.3)";
 				} else {
+					//nsole.log(selection)
 					document.getElementById(
 						"in".concat("right", selecclickables[selection])
 					).style["transition"] = ".4s";
@@ -832,6 +834,7 @@ function disableScroll() {
 	document.querySelector("html").scrollTop = window.scrollY;
 }//disable scrolling (kinda uselses)
 function clear(dir, indivcoll) {
+	selection=0;
 	if (dir == "left") {
 		if (leftcurpro == "music") {
 			clearTimeout(musictimeout1);
@@ -841,6 +844,15 @@ function clear(dir, indivcoll) {
 			clearTimeout(musictimeout5);
 			clearTimeout(etimeout);
 			clearTimeout(dtimeout);
+			clearTimeout(playlisttimeout);
+			clearTimeout(playlisttimeout1);
+			clearTimeout(playlisttimeout2);
+			clearTimeout(playlisttimeout3);
+			clearTimeout(playlisttimeout4);
+			clearTimeout(playlisttimeout5);
+			clearTimeout(playlisttimeout6);
+			clearTimeout(playlisttimeout7);
+			clearTimeout(playlisttimeout8);
 			//console.log("music canceled");
 		}
 	} else if (dir == "right") {
@@ -852,6 +864,15 @@ function clear(dir, indivcoll) {
 			clearTimeout(musictimeout5);
 			clearTimeout(etimeout);
 			clearTimeout(dtimeout);
+			clearTimeout(playlisttimeout);
+			clearTimeout(playlisttimeout1);
+			clearTimeout(playlisttimeout2);
+			clearTimeout(playlisttimeout3);
+			clearTimeout(playlisttimeout4);
+			clearTimeout(playlisttimeout5);
+			clearTimeout(playlisttimeout6);
+			clearTimeout(playlisttimeout7);
+			clearTimeout(playlisttimeout8);
 			//console.log("music canceled");
 		}
 	}
@@ -886,8 +907,6 @@ function clear(dir, indivcoll) {
 		indivcoll[i].style["z-index"] = "0";
 		indivcoll[i].style["text-shadow"] = "";
 	}
-	//document.getElementsByClassName("leftindiv").style.width = "0";
-	//document.getElementsByClassName("leftindiv").style.height = "0";
 }//wipe div for next app
 
 ////////////1 STAR
@@ -904,14 +923,10 @@ function exitdown(dir) {
 	}
 
 	document.getElementById(dir.concat("div")).style.transition = ".5s";
-	//document.getElementById("leftdiv").style["border-radius"] = "100px";
 	document.getElementById(dir.concat("div")).style.transform =
 		"translate(0px,600px) scale(1.5,1.5)";
 
 	document.getElementById(dir.concat("div")).style.opacity = "0";
-	//document.getElementById(dir).style["background-positon"] = "100% -100%";
-	//document.getElementById(dir).style["background-repeat"] = no-repeat;
-	//document.getElementById(dir).style["animation-fill-mode"] = "forwards";
 	if (justboot >= 3) {
 		if (gradani == 0) {
 			gradani = 1;
@@ -926,11 +941,6 @@ function exitdown(dir) {
 			"linear-gradient(0deg, #000000,#000000,#000000 )";
 		justboot = justboot + 1;
 	}
-	//document.getElementById(dir).style["background-positon"] = "50% 10px";
-
-	//document.getElementById(dir.concat("div")).style[
-	//"background-color"
-	//] = colorblend;
 }//exit app down
 function exitup(dir) {
 	runani = 1;
@@ -2022,7 +2032,7 @@ function playlistclick(dir, id) {
 			selecid = 1;
 		}
 
-		setTimeout(function () {
+		playlisttimeout2 = setTimeout(function () {
 			document.getElementById("in".concat(dir, selecid)).style["transition"] =
 				"0s";
 			if (
@@ -2068,7 +2078,7 @@ function playlistclick(dir, id) {
 			document.getElementById("in".concat(dir, selecid)).style["border"] = "0px";
 			document.getElementById("in".concat(dir, selecid)).style["box-shadow"] =
 				"0 0 0pt 0pt";
-			setTimeout(function () {
+			playlisttimeout3 = setTimeout(function () {
 				document.getElementById("in".concat(dir, selecid)).style[
 					"transition-duration"
 				] = "1s,1.5s,1.3s";
@@ -2128,7 +2138,7 @@ function playlistclick(dir, id) {
 			document.getElementById("in".concat(dir, "7")).style["z-index"] = "2";
 			document.getElementById("in".concat(dir, "8")).style["z-index"] = "2";
 
-			setTimeout(function () {
+			playlisttimeout4 = setTimeout(function () {
 				document.getElementById("in".concat(dir, "8")).style["transition"] = "1s";
 				document.getElementById("in".concat(dir, "7")).style["transition"] = "1s";
 				document.getElementById("in".concat(dir, "9")).style["transition"] = "1s";
@@ -2174,7 +2184,7 @@ function playlistmenuclick(dir, id) {
 		document.getElementById("in".concat(dir, idclicked)).style["box-shadow"] =
 			"0 0 0pt 0pt";
 
-		setTimeout(function () {
+		playlisttimeout= setTimeout(function () {
 			document.getElementById("in".concat(dir, "8")).style["transition"] = "0s";
 			document.getElementById("in".concat(dir, "7")).style["transition"] = "0s";
 
@@ -2197,7 +2207,7 @@ function playlistmenuclick(dir, id) {
 			".5s";
 		document.getElementById("in".concat(dir, selecid)).style.opacity = "0";
 
-		setTimeout(function () {
+		playlisttimeout1 = setTimeout(function () {
 			document.getElementById("in".concat(dir, selecid)).style["display"] = "";
 			document.getElementById("in".concat(dir, selecid)).style["transition"] =
 				"0s";
@@ -2324,7 +2334,7 @@ function exitloop(i2, dir, id) {
 	}
 	i2--;
 	if (i2 > 0) {
-		setTimeout(function () {
+		playlisttimeout7=setTimeout(function () {
 			exitloop(i2, dir, id);
 		}, wait);
 	}
@@ -2402,7 +2412,7 @@ function exitloop2(i2, dir, data) {
 	i2++;
 
 	if (i2 <= 6) {
-		setTimeout(function () {
+		playlisttimeout8=setTimeout(function () {
 			exitloop2(i2, dir, data);
 		}, wait);
 	} else {
@@ -2424,7 +2434,7 @@ function insideloop(i2, dir, id) {
 
 	i2++;
 	if (i2 <= 6) {
-		setTimeout(function () {
+		playlisttimeout5 = setTimeout(function () {
 			insideloop(i2, dir, id);
 		}, wait);
 	} else {
@@ -2474,7 +2484,7 @@ function insideloop2(i2, dir, data) {
 
 	i2--;
 	if (i2 > 0) {
-		setTimeout(function () {
+		playlisttimeout6 = setTimeout(function () {
 			//console.log("CURMAX"+curmaxplaylist)
 
 			insideloop2(i2, dir, data);
