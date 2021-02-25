@@ -150,10 +150,10 @@ var vart1=0
 function click(dir, indivcoll) {
 	if (lastscroll == "begin"){
 		lastscroll=100
-		console.log("yer")
+		//console.log("yer")
 	}
 
-	console.log(lastscroll)
+	//console.log(lastscroll)
 	if (lastscroll < 0) {
 		if (dir == "left") {
 			if (leftcounter == rightcounter + 1) {
@@ -228,10 +228,10 @@ function click(dir, indivcoll) {
 		}
 	}
 
-	console.log(juststarted)
+	//console.log(juststarted)
 	if (juststarted == true){
 		juststarted="working"
-		console.log("test")
+		//console.log("test")
 		setTimeout(function () {
 			document.getElementById("leftdiv").style.transition = "0s";
 			document.getElementById("leftdiv").style.transform =
@@ -388,11 +388,11 @@ var etimeout2
 $(document).on('keyup', function(gfg) {
 	if (curchoice!=2){
 		if (gfg.keyCode == 67) {
-			console.log('key was released')
+			//console.log('key was released')
 			cagain=true
 		}else if (gfg.keyCode == 68) {
 			//d
-			console.log('d key was released')
+			//console.log('d key was released')
 			dtimeout2 =setTimeout(function(){
 				//console.log(selecclickables+" "+selection)
 				if (rightcurpro=="playlist"){
@@ -411,7 +411,7 @@ $(document).on('keyup', function(gfg) {
 			},4000)
 		} else if (gfg.keyCode == 69) {
 			//e
-			console.log('e key was released')
+			//console.log('e key was released')
 			etimeout2 =setTimeout(function(){
 				if (rightcurpro=="playlist"){
 
@@ -432,7 +432,7 @@ $(document).on('keyup', function(gfg) {
 	}else if (curchoice==2){
 		if (gfg.keyCode == 68) {
 			//d
-			console.log('d key was released')
+			//console.log('d key was released')
 			dtimeout =setTimeout(function(){
 				document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
 				document.getElementById("in".concat("left", "7")).style.width="0px";
@@ -445,7 +445,7 @@ $(document).on('keyup', function(gfg) {
 			},4000)
 		} else if (gfg.keyCode == 69) {
 			//e
-			console.log('e key was released')
+			//console.log('e key was released')
 			etimeout =setTimeout(function(){
 				document.getElementById("in".concat("left", "7")).style["transition"]=".75s";
 				document.getElementById("in".concat("left", "7")).style.width=0;
@@ -527,7 +527,7 @@ if (curhover == "right") {
 	//console.log("LEFTCURPRO",leftcurpro)
 
 	if (curchoice==2){
-		console.log("WL:R")
+		//console.log("WL:R")
 		distance = 860
 		document.getElementById("in".concat("left", "7")).style["transition"]=".1s";
 		document.getElementById("in".concat("left", "7")).style["opacity"]=".5";
@@ -537,8 +537,9 @@ if (curhover == "right") {
 					//curscrollnum= curscrollnum+1
 				//console.log(oldspot)
 				if (parseInt(document.getElementById("in".concat("left", "7")).style.width, 10) !=0){
-					console.log(parseInt(document.getElementById("in".concat("left", "7")).style.width, 10))
-					console.log(oldspot)
+					//console.log(parseInt(document.getElementById("in".concat("left", "7")).style.width, 10))
+					//console.log(oldspot)
+
 					if(oldspot < (distance-20)){
 					document.getElementById("in".concat("left", "7")).style.width=oldspot+15+"px";
 					document.getElementById("main2").style["transition-timing-function"] ="ease-out";
@@ -602,7 +603,7 @@ if (curhover == "right") {
 						//console.log(leftcurpro)
 						if (rightcurpro =="playlist"){
 
-								console.log("WLG")
+								//console.log("WLG")
 
 
 							//console.log("CURMAX2"+curmaxplaylist)
@@ -711,7 +712,7 @@ if (curhover == "right") {
 
 					}else{
 						prevshad = "white 0px 0px 0pt 0pt"
-						console.log(rightcurpro)
+						//console.log(rightcurpro)
 					}
 					document.getElementById("in".concat("right", selecclickables[selection])).style['transition'] = ".4s";
 					document.getElementById("in".concat("right", selecclickables[selection])).style['box-sizing'] = "border-box";
@@ -755,17 +756,17 @@ function getnewtoken() {
 			//console.log(getCookie("access_token"))
 		},
 		fail: function (data) {
-			console.log("FAIL ", data);
+			//console.log("FAIL ", data);
+			writeerror(data)
 		},
 		complete: function (data) {
-			console.log("COMPLETE!! ", data.statusText);
+			//console.log("COMPLETE!! ", data.statusText);
 			if (data.statusText=="error"){
-				console.log("NOOOO")
-				errorcheck=true
-				showerror()
+				//console.log("NOOOO")
+				writeerror(data)
 
 			}else{
-				console.log("FIXED")
+				//console.log("FIXED")
 				errorcheck=false
 				localStorage.setItem("access_token", data.responseJSON.access_token);
 			spotifyApi.setAccessToken(localStorage.getItem("access_token"));
@@ -808,6 +809,7 @@ function getcurplaylist() {
 		},
 		function (err) {
 			console.error(err);
+
 			getnewtoken();
 			getcurplaylist();
 		}
@@ -831,63 +833,39 @@ function getcurpodcast() {
 		},
 		function (err) {
 			console.error(err);
+
 			getnewtoken();
 		}
 	);
 }
+var writeerwork=false;
 function musiccallback(dir3) {
+	//console.log(music)
 	var options = { additional_types: "episode" };
 	//var options ={"deviceIds":deviceIds,"context_uri":context_uri,}
+	if (writeerwork == false){
+		//document.getElementById("console-log-div").style.transition = ".5s";
+		setTimeout(function(){
+			if (document.getElementById("console-log-text").innerHTML!=""){
+				document.getElementById("console-log-text").style.opacity = ".7";
+				writeerwork=true
+				setTimeout(function(){
+					document.getElementById("console-log-text").style.opacity = ".7";
 
-	spotifyApi.getMyCurrentPlayingTrack(options).then(
-		function (data) {
-			//console.log('User Now Play',data),
-			stylee(data, dir3);
-		},
-		function (err) {
-			console.error("ERR"+ err);
-			getnewtoken();
+					setTimeout(function(){
+						document.getElementById("console-log-text").innerHTML = "";
+						writeerwork=false
+					},600)
+				},3000)
+
 		}
-	);
-}
-var datafile;
-var status;
-var album ="nada";
-var justreconnected=false;
-function showerror(){
-		if(errorcheck==true){
-			document.getElementById("left").style.transition = "1s";
-			document.getElementById("right").style.transition = "1s";
-			document.getElementById("main").style.transition = "1s";
-			document.getElementById("main2").style.transition = "1s";
-		document.getElementById("left").style.opacity = "0";
-		document.getElementById("right").style.opacity = "0";
-			document.getElementById("main").style["background"] =
-				"linear-gradient(-90deg, #700000, #000000,#000000 )";
-			document.getElementById("main2").style["opacity"] =
-						"0";
-			document.getElementById("main").style["background-size"] = "200% 100%";
-			document.getElementById("main").style["animation"] =
-				"flylogo 12s ease infinite";
-			document.getElementById("logo").style.transition = ".5s";
-			document.getElementById("logo").style.transform = "translate(-50px,000px) ";
-			document.getElementById("logo").style.opacity = "1";
+			},600)
+	}
 
-			document.getElementById("main").transition = ".5s";
 
-			document.getElementById("error").style.transition = ".5s";
-			document.getElementById("error").style.transform = "translate(-50px,000px) ";
-			document.getElementById("error").style.opacity = "1";
-			document.getElementById("error").innerHTML = "No Internet";
-			justreconnected=true
-			errorcheck=false
-		}
-}
-function stylee(data44, dir3) {
-	if(errorcheck==true){
-		console.log("ye")
-		}else{
-			if(justreconnected==true){
+	if (navigator.onLine) {
+		errorcheck=false
+		if(justreconnected==true){
 				document.getElementById("logo").style.opacity = "0";
 				document.getElementById("logo").style.transform = "translate(-100px,000px) ";
 				document.getElementById("left").style.opacity = "1";
@@ -901,13 +879,74 @@ function stylee(data44, dir3) {
 						".5";
 				justreconnected=false
 			}
+	} else {
+		errorcheck=true
+		showerror()
+		console.log("showerror")
+	}
+	spotifyApi.getMyCurrentPlayingTrack(options).then(
+		function (data) {
+			//console.log('User Now Play',data),
+			//writeerror(data)
+			stylee(data, dir3);
+		},
+		function (err) {
+			//console.log("test")
+			console.error("ERR"+ err);
+			//
+			getnewtoken();
+		}
+	);
+}
+var datafile;
+var status;
+var album ="nada";
+var justreconnected=false;
+
+//console.log(errresult)
+
+//document.getElementById("errorlog").innerHTML = errresult;
+
+
+function showerror(){
+	if(errorcheck==true){
+		document.getElementById("left").style.transition = "1s";
+		document.getElementById("right").style.transition = "1s";
+		document.getElementById("main").style.transition = "1s";
+		document.getElementById("main2").style.transition = "1s";
+		document.getElementById("left").style.opacity = "0";
+		document.getElementById("right").style.opacity = "0";
+		document.getElementById("main").style["background"] =
+			"linear-gradient(-90deg, #700000, #000000,#000000 )";
+		document.getElementById("main2").style["opacity"] =
+			"0";
+		document.getElementById("main").style["background-size"] = "200% 100%";
+		document.getElementById("main").style["animation"] =
+			"flylogo 12s ease infinite";
+		document.getElementById("logo").style.transition = ".5s";
+		document.getElementById("logo").style.transform = "translate(-50px,000px) ";
+		document.getElementById("logo").style.opacity = "1";
+		document.getElementById("main").transition = ".5s";
+
+		document.getElementById("error").style.transition = ".5s";
+		document.getElementById("error").style.transform = "translate(-50px,000px) ";
+		document.getElementById("error").style.opacity = "1";
+		document.getElementById("error").innerHTML = "No Internet";
+		justreconnected=true
+	}
+}
+function stylee(data44, dir3) {
+	if(errorcheck==true){
+		//console.log("ye")
+		}else{
+
 
 			//console.log("----------------INT--------------------")
 	datafile = data44
 	//console.log(data44)
 	if (data44 == "") {
 		//console.log("item1")
-		console.log("Nothing playing currently");
+		//console.log("Nothing playing currently");
 		//document.getElementById("in".concat(dir3, "5")).style.width = "0px";
 		document.getElementById("in".concat(dir3, "3")).style.width = "0px";
 		document.getElementById("in".concat(dir3, "4")).innerHTML =
@@ -955,13 +994,13 @@ function stylee(data44, dir3) {
 			if (curchoice !=2){
 				//console.log("item3.5 G")
 				if(document.getElementById("in".concat(dir3, "7")).style.width != '0px'){
-					console.log('item 3.55')
+					//console.log('item 3.55')
 					document.getElementById("in".concat(dir3, "7")).style.width = "0px";
 					document.getElementById("main2").style["opacity"] =
 						".5";
 				}
 				document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
-				console.log(spot2)
+				//console.log(spot2)
 				document.getElementById("main2").style["background-position"] =
 					spot2+"% center ";
 
@@ -971,7 +1010,7 @@ function stylee(data44, dir3) {
 			}
 		}else{
 
-			console.log("attempted to make music bar")
+			//console.log("attempted to make music bar")
 
 		}
 	}else if (dir3 == "right"){
@@ -981,7 +1020,7 @@ function stylee(data44, dir3) {
 			if (curchoice !=2){
 				//console.log("item7")
 				if(document.getElementById("in".concat(dir3, "7")).style.width != '0px'){
-					console.log('item 3.55')
+					//console.log('item 3.55')
 					document.getElementById("in".concat(dir3, "7")).style.width = "0px";
 					document.getElementById("main2").style["opacity"] =
 						".5";
@@ -996,7 +1035,7 @@ function stylee(data44, dir3) {
 			}
 		}else{
 			//console.log("item9")
-			console.log("attempted to make music bar")
+			//console.log("attempted to make music bar")
 		}
 	}
 
@@ -1024,25 +1063,31 @@ function stylee(data44, dir3) {
 		//prevsong = data.item.name;
 
 		//document.getElementById("leftdiv").style["border-radius"] = "100px";
+		if (data44.currently_playing_type == "track") {
 		if (data44.item.album.name ==album){
 							var newart = false
 
 						}else{
 							var newart = true
-							document.getElementById("in".concat(dir3, "1")).style.transform =
-								" scale(1.5,1.5)";
-							document.getElementById("in".concat(dir3, "1")).style.opacity = "0";
-							document.getElementById("main2").style.opacity = "0";
 							album = data44.item.album.name
 						}
+		}else{
+			var newart=true
+		}
+		if(newart== true){
+			document.getElementById("in".concat(dir3, "1")).style.transform =
+				" scale(1.5,1.5)";
+			document.getElementById("in".concat(dir3, "1")).style.opacity = "0";
+			document.getElementById("main2").style.opacity = "0";
 
+		}
 	}
 
 	if ((prevsong != "none")&&(timeout ==0)) {
 		//console.log("item12 G")
 		timeout = 500;
-		timeout2 = 400;
-		timeout3 = 50;
+		timeout2 = 900;
+		timeout3 = 350;
 		timeout4 = 500;
 	}
 
@@ -1056,7 +1101,7 @@ function stylee(data44, dir3) {
 			//console.log("item14")
 			document.getElementById("in".concat(dir3, "4")).style.opacity = "0";
 			if( newart == true){
-				console.log("yeh")
+				//console.log("yeh")
 				document.getElementById("in".concat(dir3, "2")).style.opacity = "0";
 			}
 			//}
@@ -1109,6 +1154,7 @@ function stylee(data44, dir3) {
 
 						}
 					} else {
+						//var newart = true
 						//console.log("item22")
 						document.getElementById("in".concat(dir3, "1")).style[
 							"background-image"
@@ -1326,6 +1372,7 @@ function playsong(){
 				},
 																									function (err) {
 					console.error(err);
+
 					getnewtoken();
 				}
 																								 );
@@ -1353,7 +1400,7 @@ window.onkeydown = function (gfg) {
 	}else if (gfg.keyCode === 67) {
 		//console.log("C key is pressed");
 		if(cagain ==true){
-			console.log(cagain)
+			//console.log(cagain)
 			if (curhover =="right"){
 				if (curchoice==2){
 					playsong();
@@ -1363,7 +1410,7 @@ window.onkeydown = function (gfg) {
 			}
 			cagain=false
 		}else{
-			console.log(cagain)
+			//console.log(cagain)
 		}
 
 
@@ -1378,11 +1425,11 @@ window.onkeydown = function (gfg) {
 		curchoice = 1;
 		zoom()
 	}else if (gfg.keyCode === 70) {
-		console.log("F key is pressed");
+		//console.log("F key is pressed");
 		curhover = "right";
 		curchoice = 0;
 	}else if (gfg.keyCode === 71) {
-		console.log("G key is pressed");
+		//console.log("G key is pressed");
 		curhover = "";
 		curchoice = 0;
 	}else{
@@ -1596,7 +1643,7 @@ function openmusic(dir, indivcoll) {
 		if (leftcurpro != "music"){
 			if (rightcurpro !="music"){
 				document.getElementById("main2").style["opacity"]= "0";
-				console.log("music")
+				//console.log("music")
 			}
 		}
 		prevsong = "none";
@@ -1632,6 +1679,7 @@ function openmusic(dir, indivcoll) {
 			"url(https://i.imgur.com/Dj7MXfv.png)";
 		document.getElementById("in".concat(dir, "4")).innerHTML =
 			"Currently, no music is playing."; //°
+		prevsong="none"
 		drawmusic(dir,indivcoll)
 
 		var access_token = localStorage.getItem("access_token");
@@ -1749,7 +1797,7 @@ function drawmusic(dir,indivcoll){
 
 }
 function openmusicwide(dir2, indivcoll) {
-	console.log("wide")
+	//console.log("wide")
 	if (dir == "left") {
 		document.getElementById("right").style["z-index"] = "0";
 		document.getElementById("left").style["z-index"] = "1";
@@ -1927,13 +1975,13 @@ function openplaylist(dir, indivcoll) {
 				document.getElementById("right").style["transition"] = "0";
 				document.getElementById("right").style["left"] = "648px";
 				drawmusic("right",indivcol2)
-				console.log("ye1")
+				//console.log("ye1")
 			}else if(rightcurpro=="music2"){
 
 				rightcurpro==""
 				leftcurpro = "playlist";
 				click("right", indivcol2);
-				console.log("ye2")
+				//console.log("ye2")
 			}
 			leftcurpro = "playlist";
 
@@ -1941,14 +1989,14 @@ function openplaylist(dir, indivcoll) {
 			if(rightcurpro=="music2"){
 
 				drawmusic("left",indivcol1)
-				console.log("ye3")
+				//console.log("ye3")
 			}else if(leftcurpro=="music2"){
 				document.getElementById("right").style["transition"] = "0";
 				document.getElementById("right").style["left"] = "648px";
 				rightcurpro = "playlist";
 				leftcurpro==""
 				click("left", indivcol1);
-				console.log("ye4")
+				//console.log("ye4")
 			}
 			rightcurpro = "playlist";
 
@@ -1972,7 +2020,7 @@ function openplaylist(dir, indivcoll) {
 		if (leftcurpro != "music"){
 			if (rightcurpro !="music"){
 				document.getElementById("main2").style["opacity"]= "0";
-				console.log("music")
+				//console.log("music")
 			}
 		}
 		i = 1;
@@ -2138,13 +2186,13 @@ function openpodcast(dir, indivcoll) {
 				document.getElementById("right").style["transition"] = "0";
 				document.getElementById("right").style["left"] = "648px";
 				drawmusic("right",indivcol2)
-				console.log("ye1")
+				//console.log("ye1")
 			}else if(rightcurpro=="music2"){
 
 				rightcurpro==""
 				leftcurpro = "podcast";
 				click("right", indivcol2);
-				console.log("ye2")
+				//console.log("ye2")
 			}
 			leftcurpro = "podcast";
 
@@ -2152,14 +2200,14 @@ function openpodcast(dir, indivcoll) {
 			if(rightcurpro=="music2"){
 
 				drawmusic("left",indivcol1)
-				console.log("ye3")
+				//console.log("ye3")
 			}else if(leftcurpro=="music2"){
 				document.getElementById("right").style["transition"] = "0";
 				document.getElementById("right").style["left"] = "648px";
 				rightcurpro = "podcast";
 				leftcurpro==""
 				click("left", indivcol1);
-				console.log("ye4")
+				//console.log("ye4")
 			}
 			rightcurpro = "podcast";
 
@@ -2181,7 +2229,7 @@ function openpodcast(dir, indivcoll) {
 		if (leftcurpro != "music"){
 			if (rightcurpro !="music"){
 				document.getElementById("main2").style["opacity"]= "0";
-				console.log("music")
+				//console.log("music")
 			}
 		}
 		//console.log("podcastrun");
@@ -2329,7 +2377,7 @@ function openac(dir, indivcoll) {
 		if (leftcurpro != "music"){
 			if (rightcurpro !="music"){
 				document.getElementById("main2").style["opacity"]= "0";
-				console.log("ac")
+				//console.log("ac")
 			}
 		}
 		//console.log("acrun");
@@ -2550,7 +2598,7 @@ function playlistmenuclick(dir, id) {
 			while (i5 < 6){
 				i5++
 				if (i5 !=idclicked){
-					console.log(i5)
+					//console.log(i5)
 					document.getElementById("in".concat(dir, i5)).style.transform =
 						"scale(.8,.8) ";
 					document.getElementById("in".concat(dir, i5)).style['transition-duration'] = "0s";
@@ -2570,21 +2618,21 @@ function playlistmenuclick(dir, id) {
 			spotifyApi.getUserPlaylists().then(
 				function (data) {
 					//console.log('User Now Play',data),
-					console.log(playlistop);
+					//console.log(playlistop);
 					var data55 = playlistop[idclicked];
 					var context_uri;
 
 					curplaylist = spotifyApi.getPlaylist(data55).then(function (data) {
-						console.log(data.uri);
+						//console.log(data.uri);
 						context_uri = data.uri;
 						spotifyApi.getMyDevices().then(function (data, data2) {
-							console.log(data);
+							//console.log(data);
 							//console.log(data.devices[1].is_active)
 							let i = 0;
 
 							while (i < data.devices.length) {
 								if (data.devices[i].is_active == true) {
-									console.log(data.devices[i].id);
+									//console.log(data.devices[i].id);
 									var deviceIds = [data.devices[i].id];
 									var options = { deviceIds: deviceIds};
 									spotifyApi.setShuffle(true, options).then(
@@ -2592,7 +2640,7 @@ function playlistmenuclick(dir, id) {
 											var options = { deviceIds: deviceIds, context_uri: context_uri };
 											//spotifyApi.transferMyPlayback(deviceIds).then(function (data) {
 											spotifyApi.play(options).then(function (data, data2) {
-												console.log(data);
+												//console.log(data);
 												//console.log(data2)
 												//});
 												//console.log(data);
@@ -2611,6 +2659,7 @@ function playlistmenuclick(dir, id) {
 				function (err) {
 					console.error(err);
 					getnewtoken();
+
 				}
 			);
 		}
@@ -2619,18 +2668,18 @@ function playlistmenuclick(dir, id) {
 			//getnewtoken();
 			spotifyApi.getUserPlaylists().then(function (data) {
 				//console.log('User Now Play',data),
-				console.log(playlistop);
+				//console.log(playlistop);
 				var data55 = playlistop[idclicked];
 				var context_uri;
 				curplaylist = spotifyApi.getPlaylist(data55).then(function (data) {
-					console.log(data.uri);
+					//console.log(data.uri);
 					context_uri = [data.id];
 					var prevsongurijson = [prevsonguri];
-					console.log(prevsonguri);
+					//console.log(prevsonguri);
 					spotifyApi
 						.addTracksToPlaylist(context_uri, prevsongurijson)
 						.then(function (data) {
-						console.log(data);
+						//console.log(data);
 					});
 				});
 			});
@@ -2661,7 +2710,7 @@ function exitloop(i2,dir,id) {
 	i2--
 	if (i2 >0){
 		setTimeout(function () {
-			console.log("the thing")
+			//console.log("the thing")
 			exitloop(i2,dir,id)
 		}, wait);
 	}
@@ -2684,8 +2733,8 @@ function exitloop2(i2,dir,data) {
 			i11[i2]=[i2]
 		}else{
 			//curmaxplaylist
-			console.log("HEY"+curmaxplaylist)
-			console.log("HEY2 "+i2)
+			//console.log("HEY"+curmaxplaylist)
+			//console.log("HEY2 "+i2)
 			document.getElementById("in".concat("right", i2)).style["background-image"] = "url("+$(this).attr("src")+")";
 			document.getElementById("in".concat("right", i2)).style.transform ="scale(1,1) ";
 			document.getElementById("in".concat("right", i2)).style['transition-duration'] = ".7s,.4s,0s";
@@ -2729,7 +2778,7 @@ function exitloop2(i2,dir,data) {
 		}, wait);
 	}else{
 		blocker2=false
-		console.log("BLOCKER")
+		//console.log("BLOCKER")
 	}
 
 
@@ -2796,7 +2845,7 @@ function insideloop2(i2,dir,data) {
 		curmaxplaylist--;
 		playlistname[i2] = "";
 		playlistop[i2] = "";
-		console.log(":ye")
+		//console.log(":ye")
 		blocker2=true;
 
 	}
@@ -2813,7 +2862,7 @@ function insideloop2(i2,dir,data) {
 		}, wait);
 	}else{
 		blocker=false
-		console.log("BLOCKER")
+		//console.log("BLOCKER")
 	}
 }
 function podcastclick(dir, id) {
