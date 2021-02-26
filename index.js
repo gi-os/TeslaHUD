@@ -447,6 +447,7 @@ function click(dir, indivcoll) {
 				"scale(0,0) translate(00px,00px)";
 			document.getElementById("inleft2").style.transition = "0s";
 			document.getElementById("inleft2").style["opacity"] = "0";
+			document.getElementById("main2").style["opacity"] = "0";
 
 			setTimeout(function () {
 				document.getElementById("inleft4").style.transition = "0s";
@@ -533,6 +534,8 @@ function click(dir, indivcoll) {
 								document.getElementById("inright6").style.transition = ".5s";
 								document.getElementById("inright6").style["transition-delay"] = "0s";
 								document.getElementById("inright6").style.transform = "scale(1,1)";
+								document.getElementById("main2").style["opacity"] = "1";
+
 							}, 200);
 						}, 200);
 					}, 700);
@@ -1076,7 +1079,11 @@ function musiccallback(dir3) {
 			document.getElementById("error").innerHTML = "";
 			document.getElementById("main").style["animation"] = "";
 			document.getElementById("main").style["background"] = "";
-			document.getElementById("main2").style["opacity"] = ".5";
+			if(juststarted==false){
+								console.log('ye')
+								document.getElementById("main2").style["opacity"] = ".5";
+							}
+			//document.getElementById("main2").style["opacity"] = ".5";
 			justreconnected = false;
 		}
 	} else {
@@ -1157,7 +1164,10 @@ function stylee(data44, dir3) {
 						) {
 							//console.log('item 3.55')
 							document.getElementById("in".concat(dir3, "7")).style.width = "0px";
-							document.getElementById("main2").style["opacity"] = ".5";
+							if(juststarted==false){
+								console.log('ye')
+								document.getElementById("main2").style["opacity"] = ".5";
+							}
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						//console.log(spot2)
@@ -1181,7 +1191,11 @@ function stylee(data44, dir3) {
 						) {
 							//console.log('item 3.55')
 							document.getElementById("in".concat(dir3, "7")).style.width = "0px";
-							document.getElementById("main2").style["opacity"] = ".5";
+							if(juststarted==false){
+								console.log('ye')
+								document.getElementById("main2").style["opacity"] = ".5";
+							}
+
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						document.getElementById("main2").style["background-position"] =
@@ -1372,7 +1386,10 @@ function stylee(data44, dir3) {
 								if (newart == true) {
 									document.getElementById("in".concat(dir3, "2")).style.opacity = "1";
 								}
-								document.getElementById("main2").style.opacity = ".5";
+								if(juststarted==false){
+								console.log('ye')
+								document.getElementById("main2").style["opacity"] = ".5";
+							}
 								//}
 							}, timeout4);
 						}, timeout3);
