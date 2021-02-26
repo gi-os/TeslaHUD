@@ -541,7 +541,6 @@ function click(dir, indivcoll) {
 								document.getElementById("main2").style["opacity"] = ".5";
 								setTimeout(function () {
 									document.getElementById("inleft3").style.transition = ".75s";
-
 									document.getElementById("inleft3").style["transition-timing-function"] = "linear";
 									document.getElementById("inleft3").style["opacity"] = ".75";
 									document.getElementById("inleft5").style.transition = "1s";
