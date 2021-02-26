@@ -3,8 +3,24 @@
 	<div id="logo" class="logo" onclick="javascript:window.close('','_parent','');"></div>
 <div id="error" class="error" onclick="javascript:window.close('','_parent','');">Waiting on internet connection...</div>
 
-</div>
 
+	<audio id='audi'>
+		<source src="https://raw.githubusercontent.com/gi-os/PassportOS/master/boot-screen-startup-1080p.mp3" type="audio/mp3" />
+	</audio>
+
+	<!---->
+
+		<!--
+
+https://raw.githubusercontent.com/gi-os/PassportOS/master/boot-screen-startup-1080p.mp3
+
+
+IAN SOUND
+https://raw.githubusercontent.com/gi-os/TeslaHUD/master/gio%20is%20a%20bitch.mp3?token=ADZRUDMIAJP7GMFP3YLPVSLAE5FTS
+-->
+		<!---->
+</div>
+<iframe id="truef" class="truef" ></iframe>
 <style>
 	body{
 		background-color:black;
@@ -29,6 +45,16 @@
 		animation-duration:5s;
 		background-size:100%,200%;
 		opacity:0;
+	}
+	#truef{
+		width:1280px;
+		height:400px;
+		background-color:black;
+		border:0px;
+		position:absolute;
+		top:0;
+		left:0;
+
 	}
 	#logo {
 		position:absolute;
@@ -55,17 +81,30 @@
 	}
 </style>
 <script>
+	var waitforwifi
 	if (navigator.onLine) {
-		window.open("https://gi-os.github.io/TeslaHUD/","_self")
-
+		//window.open("https://gi-os.github.io/TeslaHUD/","_self")
+		console.log("testg")
+		document.getElementById("truef").src = "https://gi-os.github.io/TeslaHUD/";
+		setTimeout(function() { document.getElementById("audi").play(); }, 600)
 	} else {
 		document.getElementById("main").style.opacity = "1";
-		setInterval(function () {
+		waitforwifi = setInterval(function () {
 			if (navigator.onLine) {
-				window.open("https://gi-os.github.io/TeslaHUD/","_self")
+				console.log("testg")
+
+				document.getElementById("truef").src = "https://gi-os.github.io/TeslaHUD/";
+
+				setTimeout(function() { document.getElementById("audi").play(); }, 600)
+				//audioPlayer.play();
+				//setTimeout(function() { audioPlayer.play(); }, 600)
+				//window.open("https://gi-os.github.io/TeslaHUD/","_self")
+
+
+				clearInterval(waitforwifi)
 			} else {
 				//window.close('','_parent','')
-			}
+			} 
 		}, 4000);
 		//window.close('','_parent','')
 	}
