@@ -136,9 +136,11 @@ void loop() {
   if(bleKeyboard.isConnected()) {
     int joival = analogRead(joi);
   if(joival > 1925){
+    if(joival < 2500){
     Serial.print("JoiValue: ");
     Serial.println(joival);
     bleKeyboard.write('a');
+    }
   } else if (joival<1000){
     Serial.print("JoiValue: ");
     Serial.println(joival);

@@ -545,6 +545,7 @@ function click(dir, indivcoll) {
 									document.getElementById("inleft3").style["opacity"] = ".75";
 									document.getElementById("inleft5").style.transition = "1s";
 									document.getElementById("inleft5").style["opacity"] = "1";
+									juststarted = false;
 								}, 1000);
 							}, 200);
 						}, 200);
@@ -1090,7 +1091,7 @@ function musiccallback(dir3) {
 			document.getElementById("main").style["animation"] = "";
 			document.getElementById("main").style["background"] = "";
 			if(juststarted==false){
-								console.log('ye')
+								//console.log('ye')
 								document.getElementById("main2").style["opacity"] = ".5";
 							}
 			//document.getElementById("main2").style["opacity"] = ".5";
@@ -1174,10 +1175,7 @@ function stylee(data44, dir3) {
 						) {
 							//console.log('item 3.55')
 							document.getElementById("in".concat(dir3, "7")).style.width = "0px";
-							if(juststarted==false){
-								console.log('ye')
-								document.getElementById("main2").style["opacity"] = ".5";
-							}
+							document.getElementById("main2").style["opacity"] = ".5";
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						//console.log(spot2)
@@ -1202,7 +1200,7 @@ function stylee(data44, dir3) {
 							//console.log('item 3.55')
 							document.getElementById("in".concat(dir3, "7")).style.width = "0px";
 							if(juststarted==false){
-								console.log('ye')
+								//console.log('ye')
 								document.getElementById("main2").style["opacity"] = ".5";
 							}
 
@@ -1397,7 +1395,7 @@ function stylee(data44, dir3) {
 									document.getElementById("in".concat(dir3, "2")).style.opacity = "1";
 								}
 								if(juststarted==false){
-								console.log('ye')
+								//console.log('ye')
 								document.getElementById("main2").style["opacity"] = ".5";
 							}
 								//}
@@ -1475,8 +1473,11 @@ function openmusic(dir, indivcoll) {
 	//background: radial-gradient(#e66465, #9198e5);
 }
 function drawmusic(dir, indivcoll) {
-	document.getElementById("in".concat(dir, "3")).style.opacity = "0";
+	if (juststarted==true){
+		document.getElementById("in".concat(dir, "3")).style.opacity = "0";
 	document.getElementById("in".concat(dir, "5")).style.opacity = "0";
+	}
+
 	document.getElementById("in".concat(dir, "1")).style["transition"] = "1s";
 	document.getElementById("in".concat(dir, "1")).style["transition-delay"] =
 		"0s";
