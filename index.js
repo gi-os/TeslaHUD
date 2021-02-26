@@ -447,6 +447,10 @@ function click(dir, indivcoll) {
 				"scale(0,0) translate(00px,00px)";
 			document.getElementById("inleft2").style.transition = "0s";
 			document.getElementById("inleft2").style["opacity"] = "0";
+			document.getElementById("inleft3").style.transition = "0s";
+			document.getElementById("inleft3").style["opacity"] = "0";
+			document.getElementById("inleft5").style.transition = "0s";
+			document.getElementById("inleft5").style["opacity"] = "0";
 			document.getElementById("main2").style["opacity"] = "0";
 
 			setTimeout(function () {
@@ -534,8 +538,15 @@ function click(dir, indivcoll) {
 								document.getElementById("inright6").style.transition = ".5s";
 								document.getElementById("inright6").style["transition-delay"] = "0s";
 								document.getElementById("inright6").style.transform = "scale(1,1)";
-								document.getElementById("main2").style["opacity"] = "1";
+								document.getElementById("main2").style["opacity"] = ".5";
+								setTimeout(function () {
+									document.getElementById("inleft3").style.transition = ".75s";
 
+									document.getElementById("inleft3").style["transition-timing-function"] = "linear";
+									document.getElementById("inleft3").style["opacity"] = ".75";
+									document.getElementById("inleft5").style.transition = "1s";
+									document.getElementById("inleft5").style["opacity"] = "1";
+								}, 1000);
 							}, 200);
 						}, 200);
 					}, 700);
@@ -1447,10 +1458,11 @@ function openmusic(dir, indivcoll) {
 		document.getElementById("main2").style["background-size"] = "130%";
 
 		document.getElementById("main2").style["background-position"] = "0% center ";
-		document.getElementById("in".concat(dir, "1")).style["background-image"] =
-			"url(https://i.imgur.com/Dj7MXfv.png)";
-		document.getElementById("in".concat(dir, "4")).innerHTML =
-			"Currently, no music is playing."; //°
+		//document.getElementById("in".concat(dir, "1")).style["background-image"] =
+			//"url(https://i.imgur.com/Dj7MXfv.png)";
+		//document.getElementById("in".concat(dir, "4")).innerHTML =
+			//"Currently, no music is playing."; //°
+
 		prevsong = "none";
 		drawmusic(dir, indivcoll);
 
@@ -1464,6 +1476,8 @@ function openmusic(dir, indivcoll) {
 	//background: radial-gradient(#e66465, #9198e5);
 }
 function drawmusic(dir, indivcoll) {
+	document.getElementById("in".concat(dir, "3")).style.opacity = "0";
+	document.getElementById("in".concat(dir, "5")).style.opacity = "0";
 	document.getElementById("in".concat(dir, "1")).style["transition"] = "1s";
 	document.getElementById("in".concat(dir, "1")).style["transition-delay"] =
 		"0s";
@@ -1515,7 +1529,7 @@ function drawmusic(dir, indivcoll) {
 	//document.getElementById("in".concat(dir, "3")).style.width = "580px";
 	document.getElementById("in".concat(dir, "3")).style.height = "28px";
 	document.getElementById("in".concat(dir, "3")).style.backgroundColor = "white";
-	document.getElementById("in".concat(dir, "3")).style.opacity = ".7";
+
 	document.getElementById("in".concat(dir, "3")).style.left = "30px";
 	document.getElementById("in".concat(dir, "3")).style.top = "320px";
 	document.getElementById("in".concat(dir, "3")).style["border-radius"] = "20px";
@@ -1527,7 +1541,7 @@ function drawmusic(dir, indivcoll) {
 	document.getElementById("in".concat(dir, "7")).style.left = "30px";
 	document.getElementById("in".concat(dir, "7")).style.top = "320px";
 	document.getElementById("in".concat(dir, "7")).style["border-radius"] = "20px";
-	document.getElementById("in".concat(dir, "7")).style["opacity"] = ".5";
+	document.getElementById("in".concat(dir, "7")).style["opacity"] = "0";
 
 	document.getElementById("in".concat(dir, "4")).style.position = "absolute";
 	document.getElementById("in".concat(dir, "4")).style.width = "310px";
