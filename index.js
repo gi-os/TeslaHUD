@@ -613,13 +613,13 @@ function getnewtoken() {
 		},
 		fail: function (data) {
 			//console.log("FAIL ", data);
-			writeerror(data);
+			//writeerror(data);
 		},
 		complete: function (data) {
 			//console.log("COMPLETE!! ", data.statusText);
 			if (data.statusText == "error") {
 				//console.log("NOOOO")
-				writeerror(data);
+				//writeerror(data);
 			} else {
 				//console.log("FIXED")
 				errorcheck = false;
