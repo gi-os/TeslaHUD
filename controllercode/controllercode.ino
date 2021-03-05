@@ -109,6 +109,7 @@ void rotary_loop()
   }
 }
 void setup() {
+
   Serial.begin(115200);
   Serial.println("Starting BLE work!");
   bleKeyboard.begin();
@@ -131,20 +132,34 @@ void setup() {
   //rotaryEncoder.disableAcceleration(); //acceleration is now enabled by default - disable if you dont need it
   rotaryEncoder.setAcceleration(0); //250or set the value - larger number = more accelearation; 0 or 1 means disabled acceleration
 }
-
+int first =0;
+int center=0;
 void loop() {
   if(bleKeyboard.isConnected()) {
-    int joival = analogRead(joi);
-  if(joival > 1925){
-    if(joival < 2500){
-    Serial.print("JoiValue: ");
-    Serial.println(joival);
-    bleKeyboard.write('a');
+    if (first <4){
+      first+=1;
+      center=analogRead(joi);
+      Serial.print("CENTER");
+      Serial.println(center);
     }
-  } else if (joival<1000){
-    Serial.print("JoiValue: ");
-    Serial.println(joival);
-    bleKeyboard.write('b');
+    
+    int joival = analogRead(joi);
+    //Serial.print("joi");
+    //Serial.println((analogRead(joi)));
+  if(joival-center > 200){
+  //if(joival > 1900){
+    if(joival < 3000){
+      Serial.print("JoiValue: ");
+      Serial.println(joival);
+      bleKeyboard.write('a');
+    }
+  }else if(joival-center < -200){
+  //} else if (joival<1000){
+    if(joival > 0){
+      Serial.print("JoiValue: ");
+      Serial.println(joival);
+      bleKeyboard.write('b');
+    }
   }
   //in loop call your custom function which will process rotary encoder values
   rotary_loop();
