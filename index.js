@@ -784,12 +784,18 @@ window.onkeydown = function (gfg) {
 				if (curchoice == 2) {
 					playsong();
 				} else {
+					//console.log("yerrr")
 					inclick("right", selection);
 				}
 			}
 			cagain = false;
 		} else {
-			//console.log(cagain)
+			if(curchoice==2){
+				//cagain = true;
+				//console.log('yern')
+				playsong();
+			}
+			//console.log('yern')
 		}
 	} else if (gfg.keyCode === 68) {
 		//console.log("D key is pressed");
@@ -1738,6 +1744,8 @@ function openmusicwide(dir2, indivcoll) {
 
 ////////////DEPENDENCIES
 function playsong() {
+	cagain = true;
+	console.log(document.getElementById("in".concat("left", "7")).style.width)
 	var dirat = datafile.item.duration_ms;
 	document.getElementById("in".concat("left", "7")).style.width = 0 + "px";
 	var dirat = datafile.item.duration_ms;
@@ -1777,6 +1785,7 @@ function playsong() {
 		}
 		i = 0;
 	});
+	cagain = true;
 }//sets location for play when selecting spot in song for wide music
 
 //--------------------------PLAYLIST --------------------------
