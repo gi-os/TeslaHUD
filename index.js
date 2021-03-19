@@ -20,7 +20,7 @@ var podname = [], bigimagepod = [];//pod stuff
 var leftcurpro = "music", rightcurpro = "playlist", dir = "left", lastscroll = "begin", previcon = "null", curdir = "left", album = "nada", font = "basic-sans, sans-serif";//misc word vals
 var focused, idclicked, selecid, playlisttimeout1, playlisttimeout, playlisttimeout2, playlisttimeout3, playlisttimeout4, playlisttimeout5, playlisttimeout6, playlisttimeout7, playlisttimeout8, prevleft, prevtop, beginskip, oldspot, prevshad, selecclickables, datafile, status, curhover;// misc empty vals
 var counter = 0, songlength = 0, vart1 = 0, curchoice = 0, lastscrollcounter = 0, nextpagecounter = 0, inwork = 0, lenge = 0, leftcounter = -1, rightcounter = -1, max = 3, justboot = 1;//misc 0 values
-var writeerwork = false, justreconnected = false, errorcheck = false, cagain = true, blocker = false, blocker2 = true, juststarted = true, stylemusic = false;//misc true/false vals
+var writeerwork = false, justreconnected = false, errorcheck = false, cagain = true, blocker = false, blocker2 = true, juststarted = true, stylemusic = false;//misc true/false vals fixed?
 var clickables = {
 	music: [3, 7, 8, 9],
 	playlist: [1, 2, 3, 4, 5, 6],
@@ -613,13 +613,13 @@ function getnewtoken() {
 		},
 		fail: function (data) {
 			//console.log("FAIL ", data);
-			writeerror(data);
+			//writeerror(data);
 		},
 		complete: function (data) {
 			//console.log("COMPLETE!! ", data.statusText);
 			if (data.statusText == "error") {
 				//console.log("NOOOO")
-				writeerror(data);
+				//writeerror(data);
 			} else {
 				//console.log("FIXED")
 				errorcheck = false;
