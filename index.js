@@ -792,7 +792,7 @@ window.onkeydown = function (gfg) {
 		} else {
 			if(curchoice==2){
 				//cagain = true;
-				console.log('yern')
+				//console.log('yern')
 				playsong();
 			}
 			//console.log('yern')
@@ -1757,7 +1757,7 @@ function openmusicwide(dir2, indivcoll) {
 ////////////DEPENDENCIES
 function playsong() {
 	cagain = true;
-	console.log(document.getElementById("in".concat("left", "7")).style.width)
+	//console.log(document.getElementById("in".concat("left", "7")).style.width)
 	var dirat = datafile.item.duration_ms;
 	document.getElementById("in".concat("left", "7")).style.width = 0 + "px";
 	var dirat = datafile.item.duration_ms;
