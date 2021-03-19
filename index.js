@@ -20,7 +20,7 @@ var podname = [], bigimagepod = [];//pod stuff
 var leftcurpro = "music", rightcurpro = "playlist", dir = "left", lastscroll = "begin", previcon = "null", curdir = "left", album = "nada", font = "basic-sans, sans-serif";//misc word vals
 var focused, idclicked, selecid, playlisttimeout1, playlisttimeout, playlisttimeout2, playlisttimeout3, playlisttimeout4, playlisttimeout5, playlisttimeout6, playlisttimeout7, playlisttimeout8, prevleft, prevtop, beginskip, oldspot, prevshad, selecclickables, datafile, status, curhover;// misc empty vals
 var counter = 0, songlength = 0, vart1 = 0, curchoice = 0, lastscrollcounter = 0, nextpagecounter = 0, inwork = 0, lenge = 0, leftcounter = -1, rightcounter = -1, max = 3, justboot = 1;//misc 0 values
-var writeerwork = false, justreconnected = false, errorcheck = false, cagain = true, blocker = false, blocker2 = true, juststarted = true, stylemusic = false;//misc true/false vals fixed?
+var writeerwork = false, justreconnected = false, errorcheck = false, cagain = true, blocker = false, blocker2 = true, juststarted = true, stylemusic = false;//misc true/false vals
 var clickables = {
 	music: [3, 7, 8, 9],
 	playlist: [1, 2, 3, 4, 5, 6],
@@ -613,13 +613,13 @@ function getnewtoken() {
 		},
 		fail: function (data) {
 			//console.log("FAIL ", data);
-			//writeerror(data);
+			writeerror(data);
 		},
 		complete: function (data) {
 			//console.log("COMPLETE!! ", data.statusText);
 			if (data.statusText == "error") {
 				//console.log("NOOOO")
-				//writeerror(data);
+				writeerror(data);
 			} else {
 				//console.log("FIXED")
 				errorcheck = false;
@@ -792,7 +792,7 @@ window.onkeydown = function (gfg) {
 		} else {
 			if(curchoice==2){
 				//cagain = true;
-				//console.log('yern')
+				console.log('yern')
 				playsong();
 			}
 			//console.log('yern')
@@ -1147,7 +1147,7 @@ function stylee(data44, dir3) {
 			document.getElementById("in".concat(dir3, "2")).innerHTML = "";
 			document.getElementById("in".concat(dir3, "1")).style["background-image"] =
 				"url(https://i.imgur.com/Dj7MXfv.png)";
-			document.getElementById("main2").style["opacity"] = "0";
+			//document.getElementById("main2").style["opacity"] = "0";
 			//document.getElementById("main2").style["background-position"] =
 			//"~ 80%";
 			document.getElementById("main2").style["background-size"] = "150%";
@@ -1253,6 +1253,10 @@ function stylee(data44, dir3) {
 
 				//document.getElementById("leftdiv").style["border-radius"] = "100px";
 				if (data44.currently_playing_type == "track") {
+					document.getElementById("in".concat(dir3, "1")).style.transition = "1s";
+					document.getElementById("in".concat(dir3, "1")).style[
+						"transition-duration"
+					] = "1s,0s";
 					if (data44.item.album.name == album) {
 						var newart = false;
 					} else {
@@ -1263,23 +1267,57 @@ function stylee(data44, dir3) {
 					var newart = true;
 				}
 				if (newart == true) {
-					document.getElementById("in".concat(dir3, "1")).style.transform =
-						" scale(1.5,1.5)";
-					document.getElementById("in".concat(dir3, "1")).style.opacity = "0";
-					document.getElementById("main2").style.opacity = "0";
+					//document.getElementById("in".concat(dir3, "1")).style.transform =
+						//" scale(1.5,1.5)";
+					//document.getElementById("in".concat(dir3, "1")).style.opacity = "0";
+					//document.getElementById("main2").style.opacity = "0";
 				}
 			}
 			if (prevsong != "none" && timeout == 0) {
 				//console.log("item12 G")
-				timeout = 500;
+				timeout = 000;
 				timeout2 = 900;
-				timeout3 = 350;
-				timeout4 = 500;
+				timeout3 = 150;
+				timeout4 = 100;
+				document.getElementById("in".concat(dir3, "4")).style.transition = ".5s";
+				document.getElementById("in".concat(dir3, "2")).style.transition = ".75s";
+				document.getElementById("in".concat(dir3, "3")).style.transition = ".75s";
+				document.getElementById("in".concat(dir3, "3")).style[
+					"transition-timing-function"
+				] = "linear";
 			}
 			if (prevsong != data44.item.name) {
 				//console.log("item13")
 				prevsong = data44.item.name;
 				prevsonguri = data44.item.uri;
+				if (data44.currently_playing_type == "track") {
+								//console.log("item19")
+								//console.log(data44.item.is_local)
+								if (data44.item.is_local != true) {
+									//console.log("item20")
+									document.getElementById("in".concat(dir3, "1")).style[
+										"background-image"
+									] = "url(" + data44.item.album.images[0].url + ")";
+									document.getElementById("main2").style["background-image"] =
+										"url(" + data44.item.album.images[0].url + ")";
+								} else {
+									if (newart == true) {
+										document.getElementById("in".concat(dir3, "1")).style[
+											"background-image"
+										] = "url(https://i.imgur.com/Dj7MXfv.png)";
+										document.getElementById("main2").style["background-image"] = "";
+									}
+									//console.log("item21")
+								}
+							} else {
+								//var newart = true
+								//console.log("item22")
+								document.getElementById("in".concat(dir3, "1")).style[
+									"background-image"
+								] = "url(" + data44.item.images[0].url + ")";
+								document.getElementById("main2").style["background-image"] =
+									"url(" + data44.item.images[0].url + ")";
+							}
 				musictimeout1 = setTimeout(function () {
 					//if (prevsong != data44.item.name) {
 					//console.log("item14")
@@ -1289,6 +1327,7 @@ function stylee(data44, dir3) {
 						document.getElementById("in".concat(dir3, "2")).style.opacity = "0";
 					}
 					//}
+
 					musictimeout2 = setTimeout(function () {
 						//console.log("item15")
 						//if (prevsong != data44.item.name) {
@@ -1322,34 +1361,7 @@ function stylee(data44, dir3) {
 								"hidden";
 							document.getElementById("in".concat(dir3, "4")).innerHTML =
 								data44.item.name; //°
-							if (data44.currently_playing_type == "track") {
-								//console.log("item19")
-								//console.log(data44.item.is_local)
-								if (data44.item.is_local != true) {
-									//console.log("item20")
-									document.getElementById("in".concat(dir3, "1")).style[
-										"background-image"
-									] = "url(" + data44.item.album.images[0].url + ")";
-									document.getElementById("main2").style["background-image"] =
-										"url(" + data44.item.album.images[0].url + ")";
-								} else {
-									if (newart == true) {
-										document.getElementById("in".concat(dir3, "1")).style[
-											"background-image"
-										] = "url(https://i.imgur.com/Dj7MXfv.png)";
-										document.getElementById("main2").style["background-image"] = "";
-									}
-									//console.log("item21")
-								}
-							} else {
-								//var newart = true
-								//console.log("item22")
-								document.getElementById("in".concat(dir3, "1")).style[
-									"background-image"
-								] = "url(" + data44.item.images[0].url + ")";
-								document.getElementById("main2").style["background-image"] =
-									"url(" + data44.item.images[0].url + ")";
-							}
+
 
 							if (data44.currently_playing_type == "track") {
 								//console.log("item23")
@@ -1392,9 +1404,9 @@ function stylee(data44, dir3) {
 								//console.log("item27")
 
 								//console.log("HERE",prevsonguri)
-								document.getElementById("in".concat(dir3, "1")).style.transform =
-									" scale(1,1)";
-								document.getElementById("in".concat(dir3, "1")).style.opacity = "1";
+								//document.getElementById("in".concat(dir3, "1")).style.transform =
+									//" scale(1,1)";
+								//document.getElementById("in".concat(dir3, "1")).style.opacity = "1";
 
 								document.getElementById("in".concat(dir3, "4")).style.opacity = "1";
 								if (newart == true) {
@@ -1437,10 +1449,10 @@ function openmusic(dir, indivcoll) {
 			}
 		}
 		prevsong = "none";
-		timeout = 0;
-		timeout2 = 0;
-		timeout3 = 0;
-		timeout4 = 0;
+		timeout = 000;
+				timeout2 = 900;
+				timeout3 = 150;
+				timeout4 = 100;
 		getcurplay();
 		document.getElementById(dir.concat("div")).style["background-color"] = "";
 		////document.getElementById(dir.concat("div")).style.backgroundColor = "black";
