@@ -50,6 +50,8 @@ https://raw.githubusercontent.com/gi-os/TeslaHUD/master/gio%20is%20a%20bitch.mp3
 	<div id="logo" onclick="javascript:window.close('','_parent','');"></div>
 	<div class="error" id="error" onclick="javascript:window.close('','_parent','');"></div>
 </div>
+<div class="notice" id="notice" ></div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spotify-web-api-js/1.5.1/spotify-web-api.js"></script>
@@ -88,6 +90,11 @@ background: linear-gradient(
     0%{background-position:00% 50%}
 		50%{background-position:100% 50%}
 		100%{background-position:00% 50%}
+}
+@keyframes opac {
+		00%{transform: scale(1.0)}
+    50%{transform: scale(1.1)}
+		100%{transform: scale(1.0))}
 }
 #errorlog{
 	font-size:30px;
