@@ -622,14 +622,14 @@ function getnewtoken() {
 			//console.log(getCookie("access_token"))
 		},
 		fail: function (data) {
-			//console.log("FAIL ", data);
-			writeerror(data);
+			console.log("FAIL ", data);
+			//writeerror(data);
 		},
 		complete: function (data) {
 			//console.log("COMPLETE!! ", data.statusText);
 			if (data.statusText == "error") {
-				//console.log("NOOOO")
-				writeerror(data);
+				console.log("FAIL ")
+				//writeerror(data);
 			} else {
 				//console.log("FIXED")
 				errorcheck = false;
@@ -1186,14 +1186,26 @@ function stylee(data44, dir3) {
 			//document.getElementById("inleft3").style["-webkit-background-clip"] ="text";
 			//document.getElementById("inleft3").style["-webkit-text-fill-color"] ="transparent";
 
+				//console.log(dir3)
+				//console.log("item11")
+				//console.log( data44.item.name)
+				//prevsong = data.item.name;
+				//document.getElementById("leftdiv").style["border-radius"] = "100px";
+			//console.log(data44.context.uri)
+				if(data44.context != null){
+					if(data44.context.uri != null){
+					var str=data44.context.uri
+					console.log(data44.context.uri)
+					//console.log(str.split("spotify:playlist:")[1]);
+					//var options= playlistop
+					cursongplaylist=str.split("spotify:playlist:")[1]
+					}
+				}
 
 			//background: radial-gradient(#e66465, #9198e5);
 			//console.log(data44.context.uri)
 			//console.log(playlistop)
-			var str=data44.context.uri
-			//console.log(str.split("spotify:playlist:")[1]);
-			//var options= playlistop
-			cursongplaylist=str.split("spotify:playlist:")[1]
+
 			//var cur=1
 			//console.log(playlistop[1])
 			//while ( cur <= 6){
@@ -1286,26 +1298,22 @@ function stylee(data44, dir3) {
 				document.getElementById("in".concat(dir3, "7")).style.transition = ".75s";
 			} else if (prevsong != data44.item.name) {
 
-
-				//console.log("item11")
-				//console.log( data44.item.name)
-				//prevsong = data.item.name;
-
-				//document.getElementById("leftdiv").style["border-radius"] = "100px";
 				if (data44.currently_playing_type == "track") {
-					document.getElementById("in".concat(dir3, "1")).style.transition = "1s";
-					document.getElementById("in".concat(dir3, "1")).style[
-						"transition-duration"
-					] = "1s,0s";
-					if (data44.item.album.name == album) {
-						var newart = false;
+						console.log(dir3)
+						document.getElementById("in".concat(dir3, "1")).style.transition = "1s";
+						document.getElementById("in".concat(dir3, "1")).style[
+							"transition-duration"
+						] = "1s,0s";
+						if (data44.item.album.name == album) {
+							var newart = false;
+						} else {
+							var newart = true;
+							album = data44.item.album.name;
+						}
 					} else {
 						var newart = true;
-						album = data44.item.album.name;
 					}
-				} else {
-					var newart = true;
-				}
+
 				if (newart == true) {
 					//document.getElementById("in".concat(dir3, "1")).style.transform =
 						//" scale(1.5,1.5)";
@@ -1902,6 +1910,7 @@ function playliststylee(data, dir3) {
 		//bigimage[i-1].src=data.items[i-1].images[0].url;
 		//console.log(bigimage[i-1]);
 		//i11[i]=[i]
+
 		if (typeof bigimage[i - 1] == "undefined") {
 			//document.getElementById("in".concat(dir3, i)).style["display"] = "none";
 			bigimage[i - 1] = new Image();
