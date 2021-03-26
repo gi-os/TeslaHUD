@@ -277,11 +277,11 @@ function zoom(event) {
 						}
 						selection = 0;
 					} else {
-
+						
 						selection++;
 					}
 				} else {
-
+					
 					selectionselection++;
 				}
 				if (selection <= selectionoptions) {
@@ -454,7 +454,7 @@ function click(dir, indivcoll) {
 			document.getElementById("inleft5").style.transition = "0s";
 			document.getElementById("inleft5").style["opacity"] = "0";
 			document.getElementById("main2").style["opacity"] = "0";
-
+			
 			setTimeout(function () {
 				document.getElementById("inleft4").style.transition = "0s";
 				document.getElementById("inleft4").style["opacity"] = "0";
@@ -543,7 +543,7 @@ function click(dir, indivcoll) {
 								document.getElementById("main2").style["opacity"] = ".5";
 								if (reblur!= 0){
 										//console.log("REBNLUR IS"+ reblur)
-										setTimeout(function(){
+										setTimeout(function(){ 
 											document.getElementById("in".concat("right", reblur)).style["animation"] =
 												"opac 3s ease infinite";
 										}, 500);
@@ -555,7 +555,7 @@ function click(dir, indivcoll) {
 									document.getElementById("inleft5").style.transition = "1s";
 									document.getElementById("inleft5").style["opacity"] = "1";
 									juststarted = false;
-
+									
 								}, 1000);
 							}, 200);
 						}, 200);
@@ -1182,10 +1182,10 @@ function stylee(data44, dir3) {
 				}
 			}
 			document.getElementById("inleft3").innerHTML = ""+ millisToMinutesAndSeconds(data44.progress_ms);
-
+			
 			//document.getElementById("inleft3").style["-webkit-background-clip"] ="text";
 			//document.getElementById("inleft3").style["-webkit-text-fill-color"] ="transparent";
-
+			 
 				//console.log(dir3)
 				//console.log("item11")
 				//console.log( data44.item.name)
@@ -1200,12 +1200,12 @@ function stylee(data44, dir3) {
 					//var options= playlistop
 					cursongplaylist=str.split("spotify:playlist:")[1]
 					}
-				}
+				} 
 
 			//background: radial-gradient(#e66465, #9198e5);
 			//console.log(data44.context.uri)
 			//console.log(playlistop)
-
+			
 			//var cur=1
 			//console.log(playlistop[1])
 			//while ( cur <= 6){
@@ -1216,7 +1216,7 @@ function stylee(data44, dir3) {
 
 			//cur=cur+1
 			//}
-
+			
 			//console.log(millisToMinutesAndSeconds(data44.progress_ms)+" - "+millisToMinutesAndSeconds(data44.item.duration_ms))
 			; // "4:59"
 			if (dir3 == "left") {
@@ -1258,7 +1258,7 @@ function stylee(data44, dir3) {
 								//console.log('ye')
 								document.getElementById("main2").style["opacity"] = ".5";
 							}
-
+							
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						document.getElementById("main2").style["background-position"] =
@@ -1273,7 +1273,7 @@ function stylee(data44, dir3) {
 				}
 			}
 			if (prevsong == "none") {
-
+				
 				//console.log("item10")
 				document.getElementById("in".concat(dir3, "1")).style.transition = "1s";
 				document.getElementById("in".concat(dir3, "1")).style[
@@ -1297,9 +1297,9 @@ function stylee(data44, dir3) {
 					"linear";
 				document.getElementById("in".concat(dir3, "7")).style.transition = ".75s";
 			} else if (prevsong != data44.item.name) {
-
+				
 				if (data44.currently_playing_type == "track") {
-						console.log(dir3)
+						//console.log(dir3)
 						document.getElementById("in".concat(dir3, "1")).style.transition = "1s";
 						document.getElementById("in".concat(dir3, "1")).style[
 							"transition-duration"
@@ -1313,7 +1313,7 @@ function stylee(data44, dir3) {
 					} else {
 						var newart = true;
 					}
-
+				
 				if (newart == true) {
 					//document.getElementById("in".concat(dir3, "1")).style.transform =
 						//" scale(1.5,1.5)";
@@ -1345,7 +1345,7 @@ function stylee(data44, dir3) {
 								if (data44.item.is_local != true) {
 									//console.log("item20")
 									var img = new Image();
-
+									
 									img.onload = function(){
 										//$container.append( '<img src="'+img.src+'" </img>');
 										document.getElementById("in".concat(dir3, "1")).style[
@@ -1382,7 +1382,7 @@ function stylee(data44, dir3) {
 						document.getElementById("in".concat(dir3, "2")).style.opacity = "0";
 					}
 					//}
-
+					
 					musictimeout2 = setTimeout(function () {
 						//console.log("item15")
 						//if (prevsong != data44.item.name) {
@@ -1416,7 +1416,7 @@ function stylee(data44, dir3) {
 								"hidden";
 							document.getElementById("in".concat(dir3, "4")).innerHTML =
 								data44.item.name; //°
-
+							
 
 							if (data44.currently_playing_type == "track") {
 								//console.log("item23")
@@ -1532,7 +1532,7 @@ function openmusic(dir, indivcoll) {
 			//"url(https://i.imgur.com/Dj7MXfv.png)";
 		//document.getElementById("in".concat(dir, "4")).innerHTML =
 			//"Currently, no music is playing."; //°
-
+		
 		prevsong = "none";
 		drawmusic(dir, indivcoll);
 
@@ -1565,7 +1565,7 @@ function drawmusic(dir, indivcoll) {
 	document.getElementById("inleft5").style["padding-top"] ="0px";
 	document.getElementById("inleft5").style["text-align"] ="right";
 	document.getElementById("inleft5").style["box-sizing"] ="border-box";
-
+	
 	document.getElementById("in".concat(dir, "1")).style["transition"] = "1s";
 	document.getElementById("in".concat(dir, "1")).style["transition-delay"] =
 		"0s";
@@ -1752,7 +1752,7 @@ function openmusicwide(dir2, indivcoll) {
 		//document.getElementById("in".concat(dir, "3")).style.backgroundColor =
 			//"white";
 		//document.getElementById("in".concat(dir, "3")).style.opacity = ".7";
-
+		
 		document.getElementById("in".concat(dir, "3")).style.left = "370px";
 		document.getElementById("in".concat(dir, "3")).style.top = "320px";
 		document.getElementById("in".concat(dir, "3")).style["border-radius"] =
@@ -1910,7 +1910,7 @@ function playliststylee(data, dir3) {
 		//bigimage[i-1].src=data.items[i-1].images[0].url;
 		//console.log(bigimage[i-1]);
 		//i11[i]=[i]
-
+		
 		if (typeof bigimage[i - 1] == "undefined") {
 			//document.getElementById("in".concat(dir3, i)).style["display"] = "none";
 			bigimage[i - 1] = new Image();
@@ -1922,7 +1922,7 @@ function playliststylee(data, dir3) {
 				"url(" + bigimage[i - 1].src + ")";
 		}
 		$(bigimage[i - 1]).on("load", function () {
-
+			
 			if (rightcurpro =="playlist"){
 				$("#in".concat(dir3, i11[i22])).css(
 				"background-image",
@@ -1931,7 +1931,7 @@ function playliststylee(data, dir3) {
 			}else{
 				//console.log(rightcurpro)
 			}
-
+			
 			i22++;
 		});
 		//console.log(data.items)
@@ -1940,18 +1940,18 @@ function playliststylee(data, dir3) {
 		//"url(" + data.items[i-1].images[0].url + ")";
 		playlistname[i] = data.items[i - 1].name;
 		playlistop[i] = data.items[i - 1].id;
-
+		
 		if (cursongplaylist==data.items[i - 1].id){
 			//console.log(data.items[i - 1].id)
 			//console.log("yes")
 			reblur=i
 			//document.getElementById("in".concat(dir3, i)).style["animation"] =
 			//"opac 3s ease infinite";
-
+			
 		}
-
-
-
+		
+				
+			
 		i++;
 	}
 }
@@ -2159,13 +2159,13 @@ function openplaylist(dir, indivcoll) {
 			"scale(0,0) ";
 		if (reblur!= 0){
 										//console.log("REBNLUR IS"+ reblur)
-										setTimeout(function(){
+										setTimeout(function(){ 
 											document.getElementById("in".concat("right", reblur)).style["animation"] =
 												"opac 3s ease infinite";
 										}, 200);
 									}
 	}, 220);
-
+	
 }
 function playlistclick(dir, id) {
 	if (id >= 0 && id <= 6) {
@@ -2184,7 +2184,7 @@ function playlistclick(dir, id) {
 		} else {
 			selecid = 1;
 		}
-
+		
 		playlisttimeout2 = setTimeout(function () {
 			document.getElementById("in".concat(dir, selecid)).style["transition"] =
 				"0s";
@@ -2277,8 +2277,8 @@ function playlistclick(dir, id) {
 				prevleft = document.getElementById("in".concat(dir, id)).style.left;
 				prevtop = document.getElementById("in".concat(dir, id)).style.top;
 			}
-
-
+		
+			
 			//console.log(prevleft)
 			document.getElementById("in".concat(dir, id)).style.transition = ".7s";
 
@@ -2311,7 +2311,7 @@ function playlistclick(dir, id) {
 	}
 }
 function playlistmenuclick(dir, id) {
-
+	
 	//if (id== 0){
 	//id = 3
 	//}
@@ -2385,8 +2385,8 @@ function playlistmenuclick(dir, id) {
 			while (i5 < 6) {
 				i5++;
 				if (i5 != idclicked) {//QUIT
-
-
+					
+					
 					//console.log(i5)
 					document.getElementById("in".concat(dir, i5)).style.transform =
 						"scale(.8,.8) ";
@@ -2447,20 +2447,20 @@ function playlistmenuclick(dir, id) {
 					getnewtoken();
 				}
 			);
-
+			
 		}else{
 			if (reblur!= 0){
 				//console.log("REBNLUR IS"+reblur)
-					setTimeout(function(){
+					setTimeout(function(){ 
 					document.getElementById("in".concat(dir, reblur)).style["animation"] =
 			"opac 3s ease infinite";
 					}, 1200);
 			}
-
-
+			
+			
 		}
 		if (id == 8) {//ADD
-
+			
 			//getnewtoken();
 			spotifyApi.getUserPlaylists().then(function (data) {
 				//console.log('User Now Play',data);
@@ -2468,7 +2468,7 @@ function playlistmenuclick(dir, id) {
 				var data55 = playlistop[idclicked];
 				var context_uri;
 				curplaylist = spotifyApi.getPlaylist(data55).then(function (data) {
-
+					
 					var playlistnametemp = data.name;
 					context_uri = [data.id];
 					var prevsongurijson = [prevsonguri];
@@ -2499,13 +2499,13 @@ function exitloop(i2, dir, id) {
 	if(rightcurpro=="playlist"){
 		if (reblur!= 0){
 				//console.log("REBNLUR IS"+ reblur)
-				setTimeout(function(){
+				setTimeout(function(){ 
 					document.getElementById("in".concat(dir, reblur)).style["animation"] =
 						"opac 3s ease infinite";
 				}, 1200);
 			}
 		if (i2 != id) {
-
+			
 		document.getElementById("in".concat(dir, i2)).style.transform = "scale(1,1) ";
 		document.getElementById("in".concat(dir, i2)).style["transition-duration"] =
 			".7s,.7s";
@@ -2523,7 +2523,7 @@ function exitloop(i2, dir, id) {
 		}, wait);
 	}
 	}
-
+	
 }//hides boxes for when opening playlist in playlist app
 function exitloop2(i2, dir, data) {
 	var wait = 200;
@@ -2562,7 +2562,7 @@ function exitloop2(i2, dir, data) {
 				"url(" + bigimage[curmaxplaylist].src + ")";
 			playlistname[i2] = data.items[curmaxplaylist].name;
 			playlistop[i2] = data.items[curmaxplaylist].id;
-
+			
 		}
 		$(bigimage[curmaxplaylist]).on("load", function () {
 			//console.log(i11)
@@ -2591,7 +2591,7 @@ function exitloop2(i2, dir, data) {
 		//console.log(data.items[curmaxplaylist].id)
 		//console.log(cursongplaylist)
 		if (cursongplaylist==data.items[curmaxplaylist].id){
-
+			
 			console.log(curmaxplaylist)
 			document.getElementById("in".concat(dir3, i2)).style["animation"] =
 			"opac 3s ease infinite";
@@ -2625,7 +2625,7 @@ function insideloop(i2, dir, id) {
 	//console.log(document.getElementById("in".concat("right", i2)).style["animation"])
 	//console.log("insideloop")
 	if (i2 != id) {
-
+		
 		document.getElementById("in".concat(dir, i2)).style.transform = "scale(0,0) ";
 		document.getElementById("in".concat(dir, i2)).style["transition-duration"] =
 			"2s,.7s";
@@ -2645,15 +2645,15 @@ function insideloop(i2, dir, id) {
 	if(document.getElementById("in".concat("right", i2)).style["animation"]==
 		 "3s ease 0s infinite normal none running opac"){
 		reblur= i2
-
+		
 		console.log("XX")
-
+		
 		document.getElementById("in".concat("right", i2)).style["animation"] =
 			"";
-
+		
 	}
-
-
+	
+	
 }
 
 function insideloop2(i2, dir, data) {
@@ -2664,9 +2664,9 @@ function insideloop2(i2, dir, data) {
 	var dir3 = dir;
 	//console.log(curmaxplaylist)
 	if(rightcurpro=="playlist"){
-
+		
 		if (typeof data.items[curmaxplaylist] != "undefined") {
-
+			
 			if(document.getElementById("in".concat("right", i2)).style["animation"]==
 				 "3s ease 0s infinite normal none running opac"){
 				reblur= i2
@@ -2724,7 +2724,7 @@ function insideloop2(i2, dir, data) {
 		//console.log("BLOCKER")
 	}
 	}
-
+	
 }
 
 function shownotice(data){
@@ -2748,7 +2748,7 @@ function shownotice(data){
 	//overflow: hidden;
 	//document.getElementById("noticetext").style["background-color"] = 'grey';
 	document.getElementById("notice").innerHTML = data
-
+	
 	document.getElementById("notice").style["transition-property"] = "transform,all";;
 	document.getElementById("notice").style["transition-duration"] = "2s,1s";
 	document.getElementById("notice").style["transition-delay"] = "2s,0s";
