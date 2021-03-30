@@ -1147,11 +1147,11 @@ function musiccallback(dir3) {
 		showerror();
 		//console.log("showerror");
 	}
-	var t0 = performance.now()
+	//var t0 = performance.now()
 	spotifyApi.getMyCurrentPlayingTrack(options).then(
 		function (data) {
-			var t1 = performance.now()
-			console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
+			//var t1 = performance.now()
+			//console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
 			//console.log('User Now Play',data),
 				//writeerror(data)
 				stylee(data, dir3);
