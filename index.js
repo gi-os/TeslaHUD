@@ -123,12 +123,12 @@ function zoom(event) {
 			}
 		}
 	}
-	if (curchoice == 2) {
+	if (curchoice == 2) {//if scrollbar for music
 		distance = 860;
 		document.getElementById("in".concat("left", "7")).style["transition"] = ".1s";
 		document.getElementById("in".concat("left", "7")).style["opacity"] = ".5";
-		if (lastscroll != 0) {
-			if (lastscroll < 0) {
+		if (lastscroll != 0) {//if scroll
+			if (lastscroll < 0) {//if down
 				if (
 					parseInt(
 						document.getElementById("in".concat("left", "7")).style.width,
@@ -164,7 +164,7 @@ function zoom(event) {
 					document.getElementById("in".concat("left", "7")).style.width,
 					10
 				);
-			} else if (lastscroll > 0) {
+			} else if (lastscroll > 0) {//if up
 				oldpicspot = (oldspot / distance) * 100;
 				if (oldspot > 20) {
 					document.getElementById("main2").style["background-position"] =
@@ -181,7 +181,7 @@ function zoom(event) {
 				);
 			}
 		}
-	} else if (curchoice == 1) {
+	} else if (curchoice == 1) {//if other
 		if (rightcurpro == "music") {
 			selecclickables = clickables.music;
 		} else if (rightcurpro == "playlist") {
@@ -194,10 +194,10 @@ function zoom(event) {
 			selecclickables = clickables.music2;
 		}
 		selectionoptions = selecclickables.length;
-		if (lastscroll != 0) {
-			if (lastscroll > 0) {
-				if (selectionselection != 0) {
-					selectionselection = 0;
+		if (lastscroll != 0) {//if scrolling
+			if (lastscroll > 0) {//if up
+				if (selectionselection != 0) {//if not equal to 0
+					//selectionselection = 0;  //READD IF TWO PRESS TO SCROLL
 					if (selection == 0) {
 						if (rightcurpro == "playlist") {
 							wrongs = [-1, 6];
@@ -217,7 +217,9 @@ function zoom(event) {
 						selection--;
 					}
 				} else {
-					selectionselection++;
+					//MOD
+					selectionselection=1;
+					//selectionselection++;
 				}
 				if (selection <= selectionoptions) {
 					if (rightcurpro == "playlist") {
@@ -257,7 +259,7 @@ function zoom(event) {
 				}
 			} else if (lastscroll < 0) {
 				if (selectionselection != 0) {
-					selectionselection = 0;
+					//selectionselection = 0;  //READD IF TWO PRESS TO SCROLL
 					if (selection == selectionoptions - 1) {
 						if (rightcurpro == "playlist") {
 							prevshad = "rgba(0, 0, 0, 0.3) 0px 0px 20px 10px";
@@ -281,8 +283,9 @@ function zoom(event) {
 						selection++;
 					}
 				} else {
-					
-					selectionselection++;
+					//MOD
+					selectionselection=1
+					//selectionselection++;
 				}
 				if (selection <= selectionoptions) {
 					if (selection <= 0) {
@@ -324,6 +327,8 @@ function zoom(event) {
 	}
 	document.getElementById("right" + "div").style["opacity"] = "1";
 	document.getElementById("right" + "div").style["opacity"] = "1";
+	console.log("SE"+selection)
+	console.log("SESE"+selectionselection)
 } //registers scrolling also gets buttons
 
 ////////////4 STAR
@@ -541,13 +546,13 @@ function click(dir, indivcoll) {
 								document.getElementById("inright6").style["transition-delay"] = "0s";
 								document.getElementById("inright6").style.transform = "scale(1,1)";
 								document.getElementById("main2").style["opacity"] = ".5";
-								if (reblur!= 0){
+								/*if (reblur!= 0){
 										//console.log("REBNLUR IS"+ reblur)
 										setTimeout(function(){ 
 											document.getElementById("in".concat("right", reblur)).style["animation"] =
 												"opac 3s ease infinite";
 										}, 500);
-									}
+									}*/
 								setTimeout(function () {
 									document.getElementById("inleft3").style.transition = ".75s";
 									document.getElementById("inleft3").style["transition-timing-function"] = "linear";
@@ -1060,23 +1065,46 @@ function enterup(dir) {
 
 
 //--------------------------MUSIC --------------------------
+var waitformusiccallback=false
 function getcurplay() {
 	if (leftcurpro == "music") {
 		musiccallback("left");
 		//console.log("l")
-		musictimeout5 = setTimeout(function () {
-			getcurplay();
-		}, 750);
+		
+		
+		
+		if (waitformusiccallback==false){
+			musictimeout5 = setTimeout(function () {
+				getcurplay();
+			}, 750);
+		}else{
+			clearTimeout(musictimeout5);
+			console.log("broke music load hopefully fixes")
+			//getcurplay();
+			musictimeout5 = setTimeout(function () {
+				getcurplay();
+			}, 750);
+		}
+			
+		
+		
 	} else if (rightcurpro == "music") {
 		musiccallback("right");
 		//console.log("r")
-		musictimeout5 = setTimeout(function () {
-			getcurplay();
-		}, 750);
+		if (waitformusiccallback==false){
+			musictimeout5 = setTimeout(function () {
+				getcurplay();
+			}, 750);
+		}else{
+			clearTimeout(musictimeout5);
+			console.log("broke music load hopefully fixes")
+		}
+		
 	}
 }
 function musiccallback(dir3) {
 	//console.log(music)
+	waitformusiccallback=true
 	var options = { additional_types: "episode" };
 	//var options ={"deviceIds":deviceIds,"context_uri":context_uri,}
 	if (writeerwork == false) {
@@ -1117,22 +1145,28 @@ function musiccallback(dir3) {
 	} else {
 		errorcheck = true;
 		showerror();
-		console.log("showerror");
+		//console.log("showerror");
 	}
+	var t0 = performance.now()
 	spotifyApi.getMyCurrentPlayingTrack(options).then(
 		function (data) {
+			var t1 = performance.now()
+			console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
 			//console.log('User Now Play',data),
-			//writeerror(data)
-			stylee(data, dir3);
+				//writeerror(data)
+				stylee(data, dir3);
 		},
 		function (err) {
 			//console.log("test")
-			console.error("ERR" + err);
+			//console.error("ERR" + err);
 			//
 			getnewtoken();
 		}
+
 	);
+	waitformusiccallback=false
 }
+
 function stylee(data44, dir3) {
 	if (errorcheck == true) {
 		//console.log("ye")
@@ -1156,6 +1190,7 @@ function stylee(data44, dir3) {
 				"transition-property"
 			] = "all,background-image";
 			document.getElementById("in".concat(dir3, "2")).innerHTML = "";
+			//console.log("eyy")
 			document.getElementById("in".concat(dir3, "1")).style["background-image"] =
 				"url(https://i.imgur.com/Dj7MXfv.png)";
 			document.getElementById("main2").style["opacity"] = "0";
@@ -1195,7 +1230,7 @@ function stylee(data44, dir3) {
 				if(data44.context != null){
 					if(data44.context.uri != null){
 					var str=data44.context.uri
-					console.log(data44.context.uri)
+					//console.log(data44.context.uri)
 					//console.log(str.split("spotify:playlist:")[1]);
 					//var options= playlistop
 					cursongplaylist=str.split("spotify:playlist:")[1]
@@ -1337,8 +1372,6 @@ function stylee(data44, dir3) {
 			if (prevsong != data44.item.name) {
 				document.getElementById("inleft5").innerHTML = millisToMinutesAndSeconds(data44.item.duration_ms);
 				//console.log("item13")
-				prevsong = data44.item.name;
-				prevsonguri = data44.item.uri;
 				if (data44.currently_playing_type == "track") {
 								//console.log("item19")
 								//console.log(data44.item.is_local)
@@ -1356,7 +1389,9 @@ function stylee(data44, dir3) {
 									};
 									img.src = data44.item.album.images[0].url;
 								} else {
-									if (newart == true) {
+									//console.log(prevsong)
+									if ((newart == true)||(prevsong=="none")) {
+										//console.log("yets")
 										document.getElementById("in".concat(dir3, "1")).style[
 											"background-image"
 										] = "url(https://i.imgur.com/Dj7MXfv.png)";
@@ -1373,6 +1408,8 @@ function stylee(data44, dir3) {
 								document.getElementById("main2").style["background-image"] =
 									"url(" + data44.item.images[0].url + ")";
 							}
+				prevsong = data44.item.name;
+				prevsonguri = data44.item.uri;
 				musictimeout1 = setTimeout(function () {
 					//if (prevsong != data44.item.name) {
 					//console.log("item14")
@@ -2157,13 +2194,13 @@ function openplaylist(dir, indivcoll) {
 			"scale(0,0) ";
 		document.getElementById("in".concat(dir, "9")).style.transform =
 			"scale(0,0) ";
-		if (reblur!= 0){
+		/*if (reblur!= 0){
 										//console.log("REBNLUR IS"+ reblur)
 										setTimeout(function(){ 
 											document.getElementById("in".concat("right", reblur)).style["animation"] =
 												"opac 3s ease infinite";
 										}, 200);
-									}
+									}*/
 	}, 220);
 	
 }
@@ -2401,8 +2438,8 @@ function playlistmenuclick(dir, id) {
 		if (id == 7) {//PLAY
 			//console.log(idclicked)
 			reblur=0
-			document.getElementById("in".concat(dir, idclicked)).style["animation"] =
-			"opac 3s ease infinite";
+			//document.getElementById("in".concat(dir, idclicked)).style["animation"] =
+			//"opac 3s ease infinite";
 			spotifyApi.getUserPlaylists().then(
 				function (data) {
 					//console.log('User Now Play',data),
@@ -2448,7 +2485,7 @@ function playlistmenuclick(dir, id) {
 				}
 			);
 			
-		}else{
+		}/*else{
 			if (reblur!= 0){
 				//console.log("REBNLUR IS"+reblur)
 					setTimeout(function(){ 
@@ -2458,7 +2495,7 @@ function playlistmenuclick(dir, id) {
 			}
 			
 			
-		}
+		}*/
 		if (id == 8) {//ADD
 			
 			//getnewtoken();
@@ -2497,13 +2534,13 @@ function exitloop(i2, dir, id) {
 	var wait = 0;
 	//console.log("exitloop")
 	if(rightcurpro=="playlist"){
-		if (reblur!= 0){
+		/*if (reblur!= 0){
 				//console.log("REBNLUR IS"+ reblur)
 				setTimeout(function(){ 
 					document.getElementById("in".concat(dir, reblur)).style["animation"] =
 						"opac 3s ease infinite";
 				}, 1200);
-			}
+			}*/
 		if (i2 != id) {
 			
 		document.getElementById("in".concat(dir, i2)).style.transform = "scale(1,1) ";
@@ -2590,15 +2627,14 @@ function exitloop2(i2, dir, data) {
 		//console.log(curmaxplaylist)
 		//console.log(data.items[curmaxplaylist].id)
 		//console.log(cursongplaylist)
-		if (cursongplaylist==data.items[curmaxplaylist].id){
+		/*if (cursongplaylist==data.items[curmaxplaylist].id){
 			
-			console.log(curmaxplaylist)
+			//console.log(curmaxplaylist)
 			document.getElementById("in".concat(dir3, i2)).style["animation"] =
-			"opac 3s ease infinite";
 		}else{
 			document.getElementById("in".concat(dir3, i2)).style["animation"] =
 			"";
-		}
+		}*/
 		curmaxplaylist++;
 	} else {
 		document.getElementById("in".concat("right", i2)).style["background-image"] =
@@ -2642,16 +2678,16 @@ function insideloop(i2, dir, id) {
 		}, wait);
 	} else {
 	}
-	if(document.getElementById("in".concat("right", i2)).style["animation"]==
+	/*if(document.getElementById("in".concat("right", i2)).style["animation"]==
 		 "3s ease 0s infinite normal none running opac"){
 		reblur= i2
 		
-		console.log("XX")
+		//console.log("XX")
 		
 		document.getElementById("in".concat("right", i2)).style["animation"] =
 			"";
 		
-	}
+	}*/
 	
 	
 }
@@ -2667,16 +2703,16 @@ function insideloop2(i2, dir, data) {
 		
 		if (typeof data.items[curmaxplaylist] != "undefined") {
 			
-			if(document.getElementById("in".concat("right", i2)).style["animation"]==
+			/*if(document.getElementById("in".concat("right", i2)).style["animation"]==
 				 "3s ease 0s infinite normal none running opac"){
 				reblur= i2
 
-				console.log("XX")
+				//console.log("XX")
 
 				document.getElementById("in".concat("right", i2)).style["animation"] =
 					"";
 
-			}
+			}*/
 		document.getElementById("in".concat("right", i2)).style[
 			"background-position"
 		] = "center";
