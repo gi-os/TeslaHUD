@@ -327,8 +327,8 @@ function zoom(event) {
 	}
 	document.getElementById("right" + "div").style["opacity"] = "1";
 	document.getElementById("right" + "div").style["opacity"] = "1";
-	console.log("SE"+selection)
-	console.log("SESE"+selectionselection)
+	//console.log("SE"+selection)
+	//console.log("SESE"+selectionselection)
 } //registers scrolling also gets buttons
 
 ////////////4 STAR
