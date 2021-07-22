@@ -627,13 +627,13 @@ function getnewtoken() {
 			//console.log(getCookie("access_token"))
 		},
 		fail: function (data) {
-			console.log("FAIL ", data);
+			console.log("Failed, ", data);
 			//writeerror(data);
 		},
 		complete: function (data) {
 			//console.log("COMPLETE!! ", data.statusText);
 			if (data.statusText == "error") {
-				console.log("FAIL ")
+				console.log("Failed, Retrying...")
 				//writeerror(data);
 			} else {
 				//console.log("FIXED")
