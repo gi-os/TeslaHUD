@@ -1107,23 +1107,7 @@ function musiccallback(dir3) {
 	waitformusiccallback=true
 	var options = { additional_types: "episode" };
 	//var options ={"deviceIds":deviceIds,"context_uri":context_uri,}
-	if (writeerwork == false) {
-		//document.getElementById("console-log-div").style.transition = ".5s";
-		setTimeout(function () {
-			if (document.getElementById("console-log-text").innerHTML != "") {
-				document.getElementById("console-log-text").style.opacity = ".7";
-				writeerwork = true;
-				setTimeout(function () {
-					document.getElementById("console-log-text").style.opacity = ".7";
-
-					setTimeout(function () {
-						document.getElementById("console-log-text").innerHTML = "";
-						writeerwork = false;
-					}, 600);
-				}, 3000);
-			}
-		}, 600);
-	}
+	
 
 	if (navigator.onLine) {
 		errorcheck = false;
