@@ -1188,7 +1188,7 @@ function stylee(data44, dir3) {
 			prevsong = "none";
 		
 		} else {
-      document.getElementById("leftdiv").style["opacity"] = ".5";
+      document.getElementById("leftdiv").style["opacity"] = "1";
       
 			if (dir == "left") {
 				if (rightcurpro == "music2") {
