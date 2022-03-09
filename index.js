@@ -847,7 +847,7 @@ function showerror() {
 		document.getElementById("left").style.opacity = "0";
 		document.getElementById("right").style.opacity = "0";
 		document.getElementById("main").style["background"] =
-			"linear-gradient(-90deg, #700000, #000000,#000000 )";
+			"linear-gradient(270deg, #071961, #000000,#000000 )";
 		document.getElementById("main2").style["opacity"] = "0";
 		document.getElementById("main").style["background-size"] = "200% 100%";
 		document.getElementById("main").style["animation"] =
@@ -860,7 +860,7 @@ function showerror() {
 		document.getElementById("error").style.transition = ".5s";
 		document.getElementById("error").style.transform = "translate(-50px,000px) ";
 		document.getElementById("error").style.opacity = "1";
-		document.getElementById("error").innerHTML = "No Internet";
+		document.getElementById("error").innerHTML = " ";
 		justreconnected = true;
 	}
 }//display wifi missing error
@@ -1176,11 +1176,11 @@ function stylee(data44, dir3) {
 		//console.log(data44)
 		if (data44 == "") {
 			//console.log("item1")
-			//console.log("Nothing playing currently");
+			console.log("Nothing playing currently");
 			//document.getElementById("in".concat(dir3, "5")).style.width = "0px";
 			document.getElementById("in".concat(dir3, "3")).style.width = "0px";
 			document.getElementById("in".concat(dir3, "4")).innerHTML =
-				"Currently, no music is playing."; //°
+				" "; //°
 			document.getElementById("in".concat(dir3, "1")).style[
 				"transition-duration"
 			] = "1s,1s";
@@ -1190,14 +1190,16 @@ function stylee(data44, dir3) {
 				"transition-property"
 			] = "all,background-image";
 			document.getElementById("in".concat(dir3, "2")).innerHTML = "";
-			//console.log("eyy")
 			document.getElementById("in".concat(dir3, "1")).style["background-image"] =
 				"url(https://i.imgur.com/Dj7MXfv.png)";
+			document.getElementById("in".concat(dir3, "1")).style["opacity"] = "0";		
+			document.getElementById("in".concat(dir3, "5")).style["opacity"] = "0";		
 			document.getElementById("main2").style["opacity"] = "0";
 			//document.getElementById("main2").style["background-position"] =
 			//"~ 80%";
 			document.getElementById("main2").style["background-size"] = "150%";
 			prevsong = "none";
+		
 		} else {
 			if (dir == "left") {
 				if (rightcurpro == "music2") {
