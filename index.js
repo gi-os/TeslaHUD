@@ -1176,7 +1176,7 @@ function stylee(data44, dir3) {
 		//console.log(data44)
 		if (data44 == "") {
 			//console.log("item1")
-			console.log("Nothing playing currently");
+			//console.log("Nothing playing currently");
 			//document.getElementById("in".concat(dir3, "5")).style.width = "0px";
 			document.getElementById("in".concat(dir3, "3")).style.width = "0px";
 			document.getElementById("in".concat(dir3, "4")).innerHTML =
@@ -1193,6 +1193,8 @@ function stylee(data44, dir3) {
 			document.getElementById("in".concat(dir3, "1")).style["background-image"] =
 				"url(https://i.imgur.com/Dj7MXfv.png)";
 			document.getElementById("in".concat(dir3, "1")).style["opacity"] = "0";		
+      document.getElementById("in".concat(dir3, "3")).style["opacity"] = "0";	
+      //document.getElementById("in".concat(dir3, "4")).style["opacity"] = "0";			
 			document.getElementById("in".concat(dir3, "5")).style["opacity"] = "0";		
 			document.getElementById("main2").style["opacity"] = "0";
 			//document.getElementById("main2").style["background-position"] =
@@ -1201,6 +1203,10 @@ function stylee(data44, dir3) {
 			prevsong = "none";
 		
 		} else {
+      document.getElementById("in".concat(dir3, "1")).style["opacity"] = "1";		
+      document.getElementById("in".concat(dir3, "3")).style["opacity"] = "1";	
+      //document.getElementById("in".concat(dir3, "4")).style["opacity"] = "0";			
+			document.getElementById("in".concat(dir3, "5")).style["opacity"] = "1";	
 			if (dir == "left") {
 				if (rightcurpro == "music2") {
 					spot = (data44.progress_ms / data44.item.duration_ms) * 840 + 20;
@@ -1973,7 +1979,7 @@ function playliststylee(data, dir3) {
 			
 			i22++;
 		});
-		//console.log(data.items)
+		console.log(data.items)
 		//console.log(curmaxplaylist)
 		//document.getElementById("in".concat(dir3, i)).style["background-image"] =
 		//"url(" + data.items[i-1].images[0].url + ")";
