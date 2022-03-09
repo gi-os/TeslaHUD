@@ -1188,12 +1188,8 @@ function stylee(data44, dir3) {
 			prevsong = "none";
 		
 		} else {
-      document.getElementById("in".concat(dir3, "1")).style["opacity"] = "1";
-      document.getElementById("in".concat(dir3, "2")).style["opacity"] = "1";		
-      document.getElementById("in".concat(dir3, "3")).style["opacity"] = "1";	
-      document.getElementById("in".concat(dir3, "4")).style["opacity"] = "1";			
-			document.getElementById("in".concat(dir3, "5")).style["opacity"] = "1";	
-      document.getElementById("in".concat(dir3, "6")).style["opacity"] = "1";
+      document.getElementById("leftdiv").style["opacity"] = "1";
+      
 			if (dir == "left") {
 				if (rightcurpro == "music2") {
 					spot = (data44.progress_ms / data44.item.duration_ms) * 840 + 20;
