@@ -1177,7 +1177,8 @@ function stylee(data44, dir3) {
 			document.getElementById("in".concat(dir3, "1")).style["background-image"] =
 				"url(https://i.imgur.com/Dj7MXfv.png)";
 			document.getElementById("in".concat(dir3, "1")).style["opacity"] = "0";		
-      document.getElementById("in".concat(dir3, "3")).style["opacity"] = "0";	
+      document.getElementById("inleft3").style["opacity"] = "0";	
+      document.getElementById("leftdiv").style["opacity"] = "0";	
       //document.getElementById("in".concat(dir3, "4")).style["opacity"] = "0";			
 			document.getElementById("in".concat(dir3, "5")).style["opacity"] = "0";		
 			document.getElementById("main2").style["opacity"] = "0";
