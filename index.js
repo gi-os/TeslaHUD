@@ -1730,22 +1730,18 @@ function openmusicwide(dir2, indivcoll) {
 		//document.getElementById("in".concat(dir, "6")).style.top = "0px";
 		//document.getElementById("in".concat(dir, "6")).style["border-radius"] =
 		//"50px";
-		//document.getElementById("document.getElementById("main2").style["background-position"] =
-  "center "+(oldspot / distance) * 100 + "%";").style["filter"] =
+		//document.getElementById("main2").style["filter"] =
 		//"brightness(0.6)";
-		//document.getElementById("document.getElementById("main2").style["background-position"] =
-  "center "+(oldspot / distance) * 100 + "%";").style["opacity"] =
+		//document.getElementById("main2").style["opacity"] =
 		//".5";
 		//document.getElementById("left").style["filter"] =
 		//"brightness(1)";
 		//document.getElementById("left").style["opacity"] =
 		//"1";
-		//document.getElementById("document.getElementById("main2").style["background-position"] =
-  "center "+(oldspot / distance) * 100 + "%";").style["background-size"] =
+		//document.getElementById("main2").style["background-size"] =
 		//"130%";
 
-		//document.getElementById("document.getElementById("main2").style["background-position"] =
-  "center "+(oldspot / distance) * 100 + "%";").style["background-position"] =
+		//document.getElementById("main2").style["background-position"] =
 		//"0% center ";
 		document.getElementById("in".concat(dir, "1")).style.transition = "1s";
 		//document.getElementById("main2").style.transition = "1s";
