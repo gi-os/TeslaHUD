@@ -141,7 +141,7 @@ function zoom(event) {
 						document.getElementById("main2").style["transition-timing-function"] =
 							"linear";
 						document.getElementById("main2").style["background-position"] =
-							"center"+(oldspot / distance) * 100 + "%";
+							(oldspot / distance) * 100 + "%"+(oldspot / distance) * 100 + "%";
 					} else {
 						oldspot = parseInt(
 							document.getElementById("in".concat("left", "7")).style.width,
@@ -168,7 +168,7 @@ function zoom(event) {
 				oldpicspot = (oldspot / distance) * 100;
 				if (oldspot > 20) {
 					document.getElementById("main2").style["background-position"] =
-					  "center "+(oldspot / distance) * 100 + "%";
+					  (oldspot / distance) * 100 + "%"+(oldspot / distance) * 100 + "%";
 					document.getElementById("in".concat("left", "7")).style.width =
 						oldspot - 15 + "px";
 				} else {
@@ -1261,7 +1261,7 @@ function stylee(data44, dir3) {
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						//console.log(spot2)
 						document.getElementById("main2").style["background-position"] =
-						  "center "+spot2 + "%";
+						  spot2+"% "+spot2 + "%";
 					} else {
 						//console.log("item4")
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
@@ -1288,7 +1288,7 @@ function stylee(data44, dir3) {
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						document.getElementById("main2").style["background-position"] =
-							"center "+spot2 + "%";
+							spot2+"% "+spot2 + "%";
 					} else {
 						//console.log("item8")
 						document.getElementById("in".concat(dir3, "7")).style.width = spot + "px";
@@ -1555,7 +1555,7 @@ function openmusic(dir, indivcoll) {
 		document.getElementById("left").style["opacity"] = "1";
 		document.getElementById("main2").style["background-size"] = "130%";
 
-		document.getElementById("main2").style["background-position"] = "center 0%";
+		document.getElementById("main2").style["background-position"] = "0% 0%";
 		//document.getElementById("in".concat(dir, "1")).style["background-image"] =
 			//"url(https://i.imgur.com/Dj7MXfv.png)";
 		//document.getElementById("in".concat(dir, "4")).innerHTML =
