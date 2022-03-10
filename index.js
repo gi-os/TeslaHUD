@@ -846,8 +846,8 @@ function showerror() {
 		//document.getElementById("main2").style.transition = "1s";
 		document.getElementById("left").style.opacity = "0";
 		document.getElementById("right").style.opacity = "0";
-		document.getElementById("main").style["background"] =
-			"linear-gradient(270deg, #071961, #000000,#000000 )";
+		//document.getElementById("main").style["background"] =
+			//"linear-gradient(270deg, #071961, #000000,#000000 )";
 		document.getElementById("main2").style["opacity"] = "0";
 		document.getElementById("main").style["background-size"] = "200% 100%";
 		document.getElementById("main").style["animation"] =
