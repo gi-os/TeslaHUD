@@ -1418,7 +1418,7 @@ function stylee(data44, dir3) {
 						//document.getElementById("in".concat(dir3, "5")).style.width = "576px";
 						document.getElementById("in".concat(dir3, "5")).style.border =
 							"3px solid rgba(255, 255, 255, 0)";
-            document.getElementById("inleft5").style["background-color"] ="rgba(255, 255, 255, .5)";
+            document.getElementById("inleft5").style["background-color"] ="rgba(255, 255, 255, .3)";
 						//}
 						musictimeout3 = setTimeout(function () {
 							//console.log("item17")
