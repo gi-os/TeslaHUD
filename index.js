@@ -1417,7 +1417,7 @@ function stylee(data44, dir3) {
 						//console.log("item16")
 						//document.getElementById("in".concat(dir3, "5")).style.width = "576px";
 						document.getElementById("in".concat(dir3, "5")).style.border =
-							"0px solid white";
+							"3px solid rgba(255, 255, 255, 0)";
             document.getElementById("inleft5").style["background-color"] ="rgba(255, 255, 255, .5)";
 						//}
 						musictimeout3 = setTimeout(function () {
