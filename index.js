@@ -141,7 +141,7 @@ function zoom(event) {
 						document.getElementById("main2").style["transition-timing-function"] =
 							"linear";
 						document.getElementById("main2").style["background-position"] =
-							"center "+(oldspot / distance) * 100 + "%";
+							"center"+(oldspot / distance) * 100 + "%";
 					} else {
 						oldspot = parseInt(
 							document.getElementById("in".concat("left", "7")).style.width,
@@ -168,7 +168,7 @@ function zoom(event) {
 				oldpicspot = (oldspot / distance) * 100;
 				if (oldspot > 20) {
 					document.getElementById("main2").style["background-position"] =
-						"center "+(oldspot / distance) * 100 + "%";
+					  "center "+(oldspot / distance) * 100 + "%";
 					document.getElementById("in".concat("left", "7")).style.width =
 						oldspot - 15 + "px";
 				} else {
@@ -1261,7 +1261,7 @@ function stylee(data44, dir3) {
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						//console.log(spot2)
 						document.getElementById("main2").style["background-position"] =
-							"center "+(oldspot / distance) * 100 + "%";
+						  "center "+spot2 + "%";
 					} else {
 						//console.log("item4")
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
@@ -1288,7 +1288,7 @@ function stylee(data44, dir3) {
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						document.getElementById("main2").style["background-position"] =
-							"center "+(oldspot / distance) * 100 + "%";
+							"center "+spot2 + "%";
 					} else {
 						//console.log("item8")
 						document.getElementById("in".concat(dir3, "7")).style.width = spot + "px";
@@ -1730,18 +1730,22 @@ function openmusicwide(dir2, indivcoll) {
 		//document.getElementById("in".concat(dir, "6")).style.top = "0px";
 		//document.getElementById("in".concat(dir, "6")).style["border-radius"] =
 		//"50px";
-		//document.getElementById("main2").style["filter"] =
+		//document.getElementById("document.getElementById("main2").style["background-position"] =
+  "center "+(oldspot / distance) * 100 + "%";").style["filter"] =
 		//"brightness(0.6)";
-		//document.getElementById("main2").style["opacity"] =
+		//document.getElementById("document.getElementById("main2").style["background-position"] =
+  "center "+(oldspot / distance) * 100 + "%";").style["opacity"] =
 		//".5";
 		//document.getElementById("left").style["filter"] =
 		//"brightness(1)";
 		//document.getElementById("left").style["opacity"] =
 		//"1";
-		//document.getElementById("main2").style["background-size"] =
+		//document.getElementById("document.getElementById("main2").style["background-position"] =
+  "center "+(oldspot / distance) * 100 + "%";").style["background-size"] =
 		//"130%";
 
-		//document.getElementById("main2").style["background-position"] =
+		//document.getElementById("document.getElementById("main2").style["background-position"] =
+  "center "+(oldspot / distance) * 100 + "%";").style["background-position"] =
 		//"0% center ";
 		document.getElementById("in".concat(dir, "1")).style.transition = "1s";
 		//document.getElementById("main2").style.transition = "1s";
