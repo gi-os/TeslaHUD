@@ -2506,7 +2506,9 @@ function playlistmenuclick(dir, id) {
 						.then(function (data) {
 							//console.log(data);
 						shownotice(document.getElementById("inleft4").innerHTML+" has been added to "+playlistnametemp)
-						});
+					}else{
+						shownotice(document.getElementById("inleft4").innerHTML+playlistnametemp+" is a private playlist.")
+					});
 				});
 			});
 		}
