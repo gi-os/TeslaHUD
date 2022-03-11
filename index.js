@@ -2504,12 +2504,13 @@ function playlistmenuclick(dir, id) {
 					spotifyApi
 						.addTracksToPlaylist(context_uri, prevsongurijson)
 						.then(function (data) {
-							//console.log(data);
+							
 						shownotice(document.getElementById("inleft4").innerHTML+" has been added to "+playlistnametemp)
 						
 						
 					});
-					window.onerror("unhandledrejection", function(promiseRejectionEvent) { 
+					window.onerror("unhandledrejection", function() { 
+						console.log("fuck");
 						shownotice(document.getElementById("inleft4").innerHTML+playlistnametemp+" is a private playlist.")
 					});
 				});
