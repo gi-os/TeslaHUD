@@ -2509,10 +2509,10 @@ function playlistmenuclick(dir, id) {
 						
 						
 					});
-					window.onerror("unhandledrejection", function() { 
+					window.onerror = function() { 
 						console.log("fuck");
 						shownotice(document.getElementById("inleft4").innerHTML+playlistnametemp+" is a private playlist.")
-					});
+					};
 				});
 			});
 		}
