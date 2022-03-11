@@ -2506,10 +2506,11 @@ function playlistmenuclick(dir, id) {
 						.then(function (data) {
 							//console.log(data);
 						shownotice(document.getElementById("inleft4").innerHTML+" has been added to "+playlistnametemp)
-						window.addEventListener("unhandledrejection", function(promiseRejectionEvent) { 
-	    				shownotice(document.getElementById("inleft4").innerHTML+playlistnametemp+" is a private playlist.")
-						});
 						
+						
+					});
+					window.onerror("unhandledrejection", function(promiseRejectionEvent) { 
+						shownotice(document.getElementById("inleft4").innerHTML+playlistnametemp+" is a private playlist.")
 					});
 				});
 			});
