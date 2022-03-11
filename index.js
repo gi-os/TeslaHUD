@@ -51,7 +51,7 @@ function begin() {
 	document.getElementById("error").style["color"] = "white";
 	document.getElementById("error").style["text-align"] = "left";
 	document.getElementById("error").style["overflow"] = "hidden";
-	document.getElementById("error").style["text-shadow"] = "0px 5px 5px black";
+	document.getElementById("error").style["text-shadow"] = "2px 2px 5px black";
 	if (navigator.platform != "Win32") {
 		document.getElementById("main").style["background"] =
 			"linear-gradient(-90deg, #071961, #000000,#000000 )";
@@ -1638,7 +1638,7 @@ function drawmusic(dir, indivcoll) {
 	document.getElementById("in".concat(dir, "2")).style["text-align"] = "left";
 	document.getElementById("in".concat(dir, "2")).style["overflow"] = "hidden";
 	document.getElementById("in".concat(dir, "2")).style["text-shadow"] =
-		"0px 5px 5px black";
+		"2px 2px 5px black";
 	//document.getElementById("in".concat(dir, "2")).innerHTML = "Joji - Nectar";
 
 	document.getElementById("in".concat(dir, "3")).style.position = "absolute";
@@ -1672,7 +1672,7 @@ function drawmusic(dir, indivcoll) {
 	document.getElementById("in".concat(dir, "4")).style["overflow"] = "hidden";
 
 	document.getElementById("in".concat(dir, "4")).style["text-shadow"] =
-		"0px 5px 5px black";
+		"2px 2px 5px black";
 	document.getElementById("in".concat(dir, "4")).style["line-height"] = "50px";
 	//document.getElementById("inleft4").style["z-index"] = "-1";
 	document.getElementById("in".concat(dir, "5")).style.position = "absolute";
@@ -1770,7 +1770,7 @@ function openmusicwide(dir2, indivcoll) {
 		document.getElementById("in".concat(dir, "2")).style["text-align"] = "left";
 		document.getElementById("in".concat(dir, "2")).style["overflow"] = "hidden";
 		document.getElementById("in".concat(dir, "2")).style["text-shadow"] =
-			"0px 5px 5px black";
+			"2px 2px 5px black";
 		//document.getElementById("in".concat(dir, "2")).innerHTML = "Joji - Nectar";
 		document.getElementById("in".concat(dir, "2")).style["transition-delay"] =
 			".5s";
@@ -1814,7 +1814,7 @@ function openmusicwide(dir2, indivcoll) {
 		document.getElementById("in".concat(dir, "4")).style["transition-delay"] =
 			".5s";
 		document.getElementById("in".concat(dir, "4")).style["text-shadow"] =
-			"0px 5px 5px black";
+			"2px 2px 5px black";
 		document.getElementById("in".concat(dir, "4")).style["line-height"] = "90px";
 		//document.getElementById("inleft4").style["z-index"] = "-1";
 		document.getElementById("in".concat(dir, "5")).style.position = "absolute";
