@@ -36,7 +36,20 @@ el.onwheel = zoom;
 disableScroll();
 
 //--------------------------MEGA CODE --------------------------
+function clockrun() {
+	var d = new Date();
+	var a = Number(d.getSeconds()) * 6;
+	document.getElementById("hand1").style.WebkitTransform = 'rotate(' + a + 'deg)';
+	var b = Number(d.getMinutes()) * 6;
+	document.getElementById("hand2").style.WebkitTransform = 'rotate(' + b + 'deg)';
+	var c = Number(d.getHours()) * 30;
+	document.getElementById("hand3").style.WebkitTransform = 'rotate(' + c + 'deg)';
+	t = setTimeout(function() {
+		clockrun()
+	}, 50);
+};
 
+clockrun();
 ////////////5 STAR
 function begin() {
 	curhover = "right";
@@ -1158,10 +1171,11 @@ function stylee(data44, dir3) {
 		//console.log("----------------INT--------------------")
 		datafile = data44;
 		//console.log(data44)
-		if (data44 == "") {
+		if (data44 == "") {//IS MUSIC PLAYING
 			//console.log("item1")
 			//console.log("Nothing playing currently");
 			//document.getElementById("in".concat(dir3, "5")).style.width = "0px";
+			document.getElementById("main3").style.opacity = "1";//SHOW CLOCK
 			document.getElementById("in".concat(dir3, "3")).style.width = "0px";
 			document.getElementById("in".concat(dir3, "4")).innerHTML =
 				" "; //°
@@ -1188,6 +1202,7 @@ function stylee(data44, dir3) {
 			prevsong = "none";
 		
 		} else {
+			document.getElementById("main3").style.opacity = "0"; //HIDE CLOCK
       document.getElementById("leftdiv").style["opacity"] = "1";
       
 			if (dir == "left") {
