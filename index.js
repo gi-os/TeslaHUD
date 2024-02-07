@@ -558,7 +558,7 @@ function click(dir, indivcoll) {
 								document.getElementById("inright6").style.transition = ".5s";
 								document.getElementById("inright6").style["transition-delay"] = "0s";
 								document.getElementById("inright6").style.transform = "scale(1,1)";
-								document.getElementById("main2").style["opacity"] = ".5";
+								document.getElementById("main2").style["opacity"] = ".7";
 								/*if (reblur!= 0){
 										//console.log("REBNLUR IS"+ reblur)
 										setTimeout(function(){ 
@@ -1134,7 +1134,7 @@ function musiccallback(dir3) {
 			document.getElementById("main").style["background"] = "";
 			if(juststarted==false){
 								//console.log('ye')
-								document.getElementById("main2").style["opacity"] = ".9";
+								document.getElementById("main2").style["opacity"] = ".7";
 							}
 			//document.getElementById("main2").style["opacity"] = ".5";
 			justreconnected = false;
@@ -1271,7 +1271,7 @@ function stylee(data44, dir3) {
 						) {
 							//console.log('item 3.55')
 							document.getElementById("in".concat(dir3, "7")).style.width = "0px";
-							document.getElementById("main2").style["opacity"] = ".9";
+							document.getElementById("main2").style["opacity"] = ".7";
 						}
 						document.getElementById("in".concat(dir3, "3")).style.width = spot + "px";
 						//console.log(spot2)
@@ -1297,7 +1297,7 @@ function stylee(data44, dir3) {
 							document.getElementById("in".concat(dir3, "7")).style.width = "0px";
 							if(juststarted==false){
 								//console.log('ye')
-								document.getElementById("main2").style["opacity"] = ".9";
+								document.getElementById("main2").style["opacity"] = ".7";
 							}
 							
 						}
@@ -1512,7 +1512,7 @@ function stylee(data44, dir3) {
 								}
 								if(juststarted==false){
 								//console.log('ye')
-								document.getElementById("main2").style["opacity"] = ".9";
+								document.getElementById("main2").style["opacity"] = ".7";
 							}
 								//}
 							}, timeout4);
