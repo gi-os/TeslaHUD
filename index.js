@@ -30,6 +30,7 @@ var clickables = {
 };
 
 
+
 begin();
 const el = document.querySelector("div");
 el.onwheel = zoom;
