@@ -56,6 +56,7 @@ function begin() {
 	curhover = "right";
 	curchoice = 1;
 	selection = 0;
+	selection = 0;
 	document.getElementById("error").style["position"] = "absolute";
 	document.getElementById("error").style.width = "576px";
 	document.getElementById("error").style.left = "700px";
